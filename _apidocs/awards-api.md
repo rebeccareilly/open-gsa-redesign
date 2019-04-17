@@ -1006,8 +1006,6 @@ Same response as mentioned above applies.
 | status | string | Status |
 
 
-
-
 ### Additional Awards Extract Functionality
 
 1.  Schema Filtering:
@@ -1075,7 +1073,7 @@ Same response as mentioned above applies.
     
     | Name  | Description |
     | ---- | ----------- |
-    | documentType (string) | Document Type |
+    | documentType | string | Document Type |
     | agencyID | string | Agency ID |
     | agencyName | string | Agency Name  |
     | piid | string | PIID  |
