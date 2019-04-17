@@ -21,7 +21,7 @@ Awards API:
 * It offers several optional search parameters, filtering by sections, AND, OR, NOT conditions and a free text search q to obtain the desired data.
 * It returns synchronous responses directly in the browser.
 * It returns ten records per page in the JSON format.
-* It can return only the first 10,000 records. Results are returned in paginated way, 10 rows at a time.
+* It can return only the first 10,000 records with 10 records per page in JSON format.
 
 Awards Extract API:
 * It offers several optional search parameters, filtering by sections, AND, OR, NOT conditions and a free text search q to obtain the desired data.
@@ -30,15 +30,13 @@ Awards Extract API:
 * It can return only the first 1,000,000 records. All the results are returned in one file based on the file format. 
 
 Awards Delete API:
-* It offers several optional search parameters and a free text search q to obtain the desired data.
+* It offers several optional search parameters AND, OR, NOT conditions and a free text search q to obtain the desired data.
 * It returns synchronous responses directly in the browser.
-* It returns ten records per page in the JSON format.
 * API retrieves data as per the descending order of the "Last Modified Date".
-* Dates must be provided in the MM/DD/YYYY format.
-* It can return only the first 10,000 records. Results are returned in paginated way, 1000 rows at a time.
+* It can return only the first 10,000 records with 1000 records per page in JSON format.
 
 Awards Delete Extract API:
-* It offers several optional search parameters and a free text search q to obtain the    desired data.
+* It offers several optional search parameters AND, OR, NOT conditions and a free text search q to obtain the    desired data.
 * It returns asynchronous responses by sending file downloadable links in the browser and in the emails.
 * It returns data in the JSON or CSV format as selected by the user.
 * It can return only the first 1,000,000 records. All the results are returned in one file based on the file format.    
@@ -933,7 +931,7 @@ Same response as mentioned above applies.
 
 | Parameter Name | Description |
 | ---- | ----------- |
-| lastModifiedDate | Last Modified Date range. Format: MM/DD/YYYY. Example: '02/22/2019' |
+| lastModifiedDate | Last Modified Date. Format: MM/DD/YYYY. Example: '02/22/2019' |
 | agencyId | Agency ID. Example: '9700'. |
 | piid | Procurement Identifier. Example: '0001'. |
 | modificationNumber | Modification Number. Example: '0'. |
@@ -981,7 +979,7 @@ API response consists of two Sections and Tags underneath each of the Sections
 
 | Parameter Name | Description |
 | ---- | ----------- |
-| lastModifiedDate | Last Modified Date range. Format: MM/DD/YYYY. Example: '02/22/2019' |
+| lastModifiedDate | Last Modified Date. Format: MM/DD/YYYY. Example: '02/22/2019' |
 | agencyId | Agency ID. Example: '9700'. |
 | piid | Procurement Identifier. Example: '0001'. |
 | modificationNumber | Modification Number. Example: '0'. |
