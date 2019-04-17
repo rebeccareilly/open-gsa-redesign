@@ -30,13 +30,13 @@ Awards Extract API:
 * It can return only the first 1,000,000 records. All the results are returned in one file based on the file format. 
 
 Awards Delete API:
-* It offers several optional search parameters AND, OR, NOT conditions and a free text search q to obtain the desired data.
+* It offers several optional search parameters, AND, OR, NOT conditions and a free text search q to obtain the desired data.
 * It returns synchronous responses directly in the browser.
 * API retrieves data as per the descending order of the "Last Modified Date".
 * It can return only the first 10,000 records with 1000 records per page in JSON format.
 
 Awards Delete Extract API:
-* It offers several optional search parameters AND, OR, NOT conditions and a free text search q to obtain the    desired data.
+* It offers several optional search parameters, AND, OR, NOT conditions and a free text search q to obtain the    desired data.
 * It returns asynchronous responses by sending file downloadable links in the browser and in the emails.
 * It returns data in the JSON or CSV format as selected by the user.
 * It can return only the first 1,000,000 records. All the results are returned in one file based on the file format.    
@@ -974,8 +974,6 @@ API response consists of two Sections and Tags underneath each of the Sections
 **Description**  Restful endpoint to retrieve deleted awards either in the CSV or JSON format.
 
 **Query String Parameters**
-
-API response consists of two Sections and Tags underneath each of the Sections
 
 | Parameter Name | Description |
 | ---- | ----------- |
