@@ -7,7 +7,7 @@ banner-heading: Awards API
 ## Overview
 Public Awards data (all the data except the DoD unrevealed data) is available for end-user consumption in the form of an Awards API and an 
 Awards Extract API that can be accessed by sending end points in the browser. 
-Additionally,Public Deleted Awards Data (all the data except the DoD unrevealed data) is available for end-user consumption in the form of an Awards Delete API and an 
+Additionally, Public Deleted Awards Data (all the data except the DoD unrevealed data) is available for end-user consumption in the form of an Awards Delete API and an 
 Awards Delete Extract API.
 
 Awards data exist in the following types:
@@ -949,7 +949,7 @@ Same response as mentioned above applies.
 
 **Expected Result**
 
-API response consists of two Sections and Tags underneath each of the Sections or Sub-sections
+API response consists of two Sections and Tags underneath each of the Sections
 
 | Section/Tag | Type | Description |
 | ---- | ---- | ----------- |
