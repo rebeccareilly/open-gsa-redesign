@@ -2357,7 +2357,7 @@ paths:
         '404':
           description: Not Found
 servers:
-  - url: //api-alpha.sam.gov/prodlike
+  - url: //api.sam.gov/prod
 components:
   schemas:
     AwardsDataServiceResource:

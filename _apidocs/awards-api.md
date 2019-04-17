@@ -3,8 +3,6 @@ title: Awards API
 banner-heading: Awards API
 ---
 
-<link rel="stylesheet" type="text/css" href="../../assets/swaggerui-dist/swagger-ui.css" >
-
 
 ## Overview
 Public Awards data (all the data except the DoD unrevealed data) is available for end-user consumption in the form of an Awards API and an Awards Extract API that can be accessed by sending end points in the browser.
@@ -27,10 +25,26 @@ Awards Extract API:
 * It returns asynchronous responses by sending file downloadable links in the browser and in the emails.
 * It returns data in the JSON or CSV format as selected by the user.
 * It can return only the first 1,000,000 records. All the results are returned in one file based on the file format requested 10        records at a time.    
+
+Awards Delete API:
+* It offers several optional search parameters and a free text search q to obtain the desired data.
+* It returns synchronous responses directly in the browser.
+* It returns ten records per page in the JSON format.
+* API retrieves data as per the descending order of the "Last Modified Date".
+* Dates must be provided in the MM/DD/YYYY format.
+* It can return only the first 10,000 records. Results are returned in paginated way, 1000 rows at a time.
+
+Awards Delete Extract API:
+* It offers several optional search parameters and a free text search q to obtain the    desired data.
+* It returns asynchronous responses by sending file downloadable links in the browser and in the emails.
+* It returns data in the JSON or CSV format as selected by the user.
+* It can return only the first 1,000,000 records. All the results are returned in one file based on the file format requested 10        records at a time.    
+
 <p><small><a href="#">Back to top</a></small></p>
 
+
 ## Getting Started
- 
+
 Awards API can be accessed from Beta or Alpha via the following end points:
 * https://api.sam.gov/prod/contractdata?api_key=< value >
 * https://api-alpha.sam.gov/prodlike/contractdata?api_key=< value >
@@ -38,6 +52,14 @@ Awards API can be accessed from Beta or Alpha via the following end points:
 Awards Extract API can be accessed from Beta or Alpha via the following end points:
 * https://api.sam.gov/prod/contractdata-extract?api_key=< value >&format=< Format Type >&emailId=< a valid email address >
 * https://api-alpha.sam.gov/prodlike/contractdata-extract?api_key=< value >& format=< Format Type >&emailId=< a valid email address >
+
+Awards Delete API can be accessed from Beta or Alpha via the following end points:
+* https://api.sam.gov/prod/contractdata-delete?api_key=< value >
+* https://api-alpha.sam.gov/prodlike/contractdata-delete?api_key=< value >
+
+Awards Delete Extract API can be accessed from Beta or Alpha via the following end points:
+* https://api.sam.gov/prod/contractdata-delete-extract?api_key=< value >&format=< Format Type >&emailId=< a valid email address >
+* https://api-alpha.sam.gov/prodlike/contractdata-delete-extract?api_key=< value >& format=< Format Type >&emailId=< a valid email address >
 
 Generating the API Key:
 * Registered users can request for a public API on 'Account Details' page.
@@ -458,396 +480,433 @@ Generating the API Key:
 
 **Expected Result**
 
-| Name  | Description |
-| ---- | ----------- |
-| awardOrIdvType (string, optional) | Award Or IDV Type | 
-| awardOrIdv (string, optional) | Award Or IDV  | 
-| documentType (string, optional) | Document Type  | 
-| agencyID (string, optional) | Agency ID  | 
-| agencyName (string, optional) | Agency Name  | 
-| piid (string, optional) | Procurement Identifier  | 
-| modificationNumber (string, optional) | Modification Number  | 
+API response consists of Sections, Sub-sections and Tags underneath each of the Sections or Sub-sections
+
+| Section/Sub-section/Tag | Type | Description |
+| ---- | ---- | ----------- |
+| **documentInformation** |
+| awardOrIdvType | string  | Award Or IDV Type | 
+| awardOrIdv | string  | Award Or IDV  | 
+| documentType | string  | Document Type  | 
+| agencyID | string  | Agency ID  | 
+| agencyName | string  | Agency Name  | 
+| piid | string  | Procurement Identifier  | 
+| modificationNumber | string  | Modification Number  | 
 | transactionNumber (int, optional) | Transaction Number  | 
-| reasonForModificationCode (string, optional) | Reason For Modification Code  | 
-| referencedIDVAgencyID (string, optional) | Referenced IDV Agency ID  | 
-| referencedIDVAgencyName (string, optional) | Referenced IDV Agency Name  | 
-| referencedIDVPIID (string, optional) | Referenced IDV PIID  | 
-| referencedIDVModificationNumber (string, optional) | Referenced IDV Modification Number  | 
-| solicitationID (string, optional) | Solicitation ID  | 
-| otherAgencyID (string, optional) | Other Agency ID  |
-| otherAgencyName (string, optional) | Other Agency Name  | 
-| otherPIID (string, optional) | Other PIID  | 
-| otherModificationNumber (string, optional) | Other Modification Number  | 
-| otherTransactionNumber (string, optional) | Other Transaction Number  | 
-| otherReferencedIDVAgencyID (string, optional) | Other Referenced IDV Agency ID  | 
-| otherReferencedIDVAgencyName (string, optional) | Other ReferencedI DV Agency Name  | 
-| otherReferencedIDVPIID (int, optional) | Other Referenced IDV PIID  | 
-| otherReferencedIDVModificationNumber (string, optional) | Other Referenced IDV ModificationNumber  | 
-| dateSigned (string, optional) | Date Signed  | 
-| effectiveDate (string, optional) | Effective Date  | 
-| completionDate (string, optional) | Completion Date  | 
-| estimatedUltimateCompletionDate (string, optional) | Estimated Ultimate Completion Date  | 
-| lastDateToOrder (string, optional) | Last Date To Order  | 
-| fiscalYear (string, optional) | Fiscal Year |
-| actionObligation (BigDecimal, optional) | ActionObligation  | 
-| baseDollarsObligated (BigDecimal, optional) | Base Dollars Obligated  | 
-| baseAndExercisedOptionsValue (BigDecimal, optional) | Base And Exercised Options Value  | 
-| baseAndAllOptionsValue (BigDecimal, optional) | Base And All Options Value  | 
-| totalActionObligation (BigDecimal, optional) | Total Action Obligation  | 
-| totalBaseAndExercisedOptionsValue (BigDecimal, optional) | Total Base And Exercised Options Value  | 
-| totalBaseAndAllOptionsValue (BigDecimal, optional) | Total Base And All Options Value  | 
-| feePaidForUseOfIDV (BigDecimal, optional) | Fee Paid For Use Of IDV  | 
-| nonGovernmentDollars (BigDecimal, optional) | Non Government Dollars  | 
-| totalNonGovernmentDollars (BigDecimal, optional) | Total Non Government Dollars  | 
-| totalEstimatedOrderValue (BigDecimal, optional) | Total Estimated Order Value  | 
-| departmentID (string, optional) | Department ID  | 
-| departmentName (string, optional) | Department Name  | 
-| contractingOfficeAgencyID (string, optional) | Contracting Office Agency ID  | 
-| contractingOfficeAgencyName (string, optional) | Contracting Office Agency Name  |
-| fundingDepartmentId (string, optional) | Funding Department Id  | 
-| fundingDepartmentName (string, optional) | Funding Department Name  | 
-| fundingAgencyID (string, optional) | Funding Agency ID  | 
-| fundingAgencyName (string, optional) | Funding Agency Name  | 
-| fundingOfficeID (string, optional) | Funding Office ID  | 
-| fundingOfficeName (string, optional) | Funding Office Name  | 
-| foreignFundingCode (string, optional) | Foreign Funding Code  | 
-| foreignFundingDescription (string, optional) | Foreign Funding Description  | 
-| websiteURL (string, optional) | Website URL  | 
-| whoCanUseShortDescription (string, optional) | Who Can Use Short Description  | 
-| whoCanUseLongDescription (string, optional) | Who Can Use Long Description  | 
-| emailAddress (string, optional) | Email Address  |
-| individualOrderCallLimit (BigDecimal, optional) | Individual Order Call Limit  | 
-| typeOfFeeForUseOfService (string, optional) | Type Of Fee For Use Of Service  | 
-| fixedFeeValue (double, optional) | Fixed Fee Value  | 
-| feeRangeLowerValue (double, optional) | Fee Range Lower Value  | 
-| feeRangeUpperValue  (double, optional) | Fee Range Upper Value  | 
-| orderingProcedure (string, optional) | Ordering Procedure  | 
-| contractActionType (string, optional) | Contract Action Type  | 
-| part8OrPart13 (string, optional) | Part8 Or Part13  | 
-| typeOfContractCode (string, optional) | Type Of Contract Code  | 
-| typeOfContractDescription (string, optional) | Type Of Contract Description  | 
-| majorProgramCode (string, optional) | Major Program Code  | 
-| nationalInterestActionCode (string, optional) | National Interest Action Code  |
-| nationalInterestActionDescription (string, optional) | National Interest Action Description  |
-| costOrPricingDataCode (string, optional) | Cost Or Pricing Data Code  |
-| costOrPricingDataDescription (string, optional) | Cost Or Pricing DataDescription  |
-| costAccountingStandardsClauseCode (string, optional) | Cost Accounting Standards Clause Code  |
-| costAccountingStandardsClauseDescription (string, optional) | Cost Accounting Standards Clause Description  |
-| descriptionOfContractRequirement (string, optional) | Description Of Contract Requirement  |
-| inherentlyGovernmentalCode (string, optional) | Inherently Governmental Code  |
-| inherentlyGovernmentalDescription (string, optional) | Inherently Governmental Description  |
-| gfpCode (string, optional) | GFP Code  |
-| gfpDescription (string, optional) | GFP Description  |
-| seaTransportationCode (string, optional) | Sea Transportation Code  |
-| seaTransportationDescription (string, optional) | Sea Transportation Description  |
-| undefinitizedActionCode  (string, optional) | Undefinitized Action Code  |
-| undefinitizedActionDescription  (string, optional) | Undefinitized Action Description  |
-| consolidatedContractCode  (string, optional) | Consolidated Contract Code  |
-| consolidatedContractDescription  (string, optional) | Consolidated Contract Description  |
-| performanceBasedServiceAcquisitionCode  (string, optional) | Performance Based Service Acquisition Code  |
-| performanceBasedServiceAcquisitionDescription  (string, optional) | Performance Based Service Acquisition Description  |
-| multiyearContractCode  (string, optional) | Multi year Contract Code  |
-| multiyearContractDescription  (string, optional) | Multi Year Contract Description  | 
-| treasuryAccountSymbolAgencyIdentifier  (string, optional) | Treasury Account Symbol Agency Identifier  |
-| treasuryAccountSymbolMainAccount  (string, optional) | Treasury Account Symbol Main Account  |
-| treasuryAccountSymbolSubAccount  (string, optional) | Treasury Account Symbol Sub Account  | 
-| subLevelPrefixCode  (string, optional) | Sub Level Prefix Code  |
-| allocationTransferAgencyIdentifier  (string, optional) | Allocation Transfer Agency Identifier  |
-| beginningPeriodOfAvailability  (string, optional) | Beginning Period Of Availability  |
-| endingPeriodOfAvailability  (string, optional) | Ending Period Of Availability  |
-| obligatedAmountTAS  (string, optional) | Obligated Amount TAS  |
-| initiative  (string, optional) | Initiative  |
-| referencedIDVPart8OrPart13  (string, optional) | Referenced IDV Part8 Or Part13  |
-| referencedIDVMultipleOrSingle  (string, optional) | Referenced IDV Multiple Or Single  |
-| referencedIDVTypeCode  (string, optional) | Referenced IDV Type Code  |
-| referencedIDVTypeDescription  (string, optional) | Referenced IDV Type Description  |
-| typeOfIDCCode  (string, optional) | Type Of IDC Code  |
-| typeOfIDCDescription  (string, optional) | Type Of IDC Description  |
-| multipleOrSingleAwardIDV  (string, optional) | Multiple Or Single Award IDV  |
-| programAcronym  (string, optional) | Program Acronym  |
-| contingencyHumanitarianPeacekeepingOperationDescription  (string, optional) | Contingency Humanitarian Peace keeping Operation Description  |
-| contractFinancingCode  (string, optional) | Contract Financing Code  |
-| contractFinancingDescription  (string, optional) | Contract Financing Description  |
-| purchaseCardPaymentMethodCode  (string, optional) | Purchase Card Payment Method Code  |
-| purchaseCardPaymentMethodDescription  (string, optional) | Purchase Card Payment Method Description  |
-| numberOfActions  (integer, optional) | Number Of Actions  |
-| typeOfAgreement  (string, optional) | Type Of Agreement  |
-| nontraditionalGovernmentContractorParticipationCode  (string, optional) | Non Traditional Government Contractor Participation Code  |
-| nontraditionalGovernmentContractorParticipationDescription  (string, optional) | Non Traditional Government Contractor Participation Description  |
-| clingerCohenActCode  (string, optional) | Clinger Cohen Act Code  |
-| clingerCohenActDescription  (string, optional) | Clinger Cohen Act Description  |
-| walshHealeyActCode  (string, optional) | Walsh Healey Act Code(Pre-V1.5)/ materialsSuppliesArticlesEquipCode (V1.5).  |
-| walshHealeyActDescription  (string, optional) | Walsh Healey Act Description(Pre-V1.5)/ materialsSuppliesArticlesEquipDescription (V1.5).  |
-| serviceContractActCode  (string, optional) | Service Contract Act Code(Pre-V1.5)/ laborStandardsCode (V1.5)  |
-| serviceContractActDescription  (string, optional) | Service Contract Act Description(Pre-V1.5)/ laborStandardsDescription (V1.5)  |
-| davisBaconActCode  (string, optional) | DavisBacon Act Code(Pre-V1.5)/ constructionWageRateReqsCode (V1.5)  |
-| davisBaconActDescription  (string, optional) | DavisBacon Act Description(Pre-V1.5)/ constructionWageRateReqsDescription (V1.5).  |
-| additionalReportingCode  (string, optional) | Additional Reporting Code  |
-| additionalReportingDescription  (string, optional) | Additional Reporting Description  |
-| interagencyContractingAuthorityCode  (string, optional) | Interagency Contracting Authority Code  |
-| interagencyContractingAuthorityDescription  (string, optional) | Interagency Contracting Authority Description  |
-| otherInteragencyContractingStatutoryAuthority  (string, optional) | Other Interagency Contracting Statutory Authority  |
-| productOrServiceCode  (string, optional) | Product Or Service Code  |
-| productOrService  (string, optional) | Product Or Service  |
-| productOrServiceDescription  (string, optional) | Product Or Service Description  |
-| bundledContractCode  (string, optional) | Bundled Contract Code  |
-| bundledContractDescription  (string, optional) | Bundled Contract Description  |
-| claimantProgramDescription  (string, optional) | Claimant Program Description  |
-| principalNAICSCode  (string, optional) | Principal NAICS Code  |
-| principalNAICSDescription  (string, optional) | Principal NAICS Description  |
-| naicsSourceCode (string, optional) | NAICS Source Code  |
-| naicsSourceDescription  (string, optional) | NAICS Source Description  |
-| idvNAICSCode  (string, optional) | IDV NAICS Code  |
-| idvNAICSDescription  (string, optional) | IDV NAICS Description  |
-| recoveredMaterialsSustainabilityCode  (string, optional) | Recovered Materials Sustainability Code  |
-| recoveredMaterialsSustainabilityDescription  (string, optional) | Recovered Materials Sustainability Description  |
-| domesticOrForeignEntityCode  (string, optional) | Domestic Or Foreign Entity Code  |
-| domesticOrForeignEntityDescription  (string, optional) | Domestic Or Foreign Entity Description  |
-| dodAcquisitionProgramCode (string, optional) | DOD Acquisition Program Code  |
-| dodAcquisitionProgramDescription  (string, optional) | DOD Acquisition Program Description  |
-| infoTechCommercialItemCategoryCode  (string, optional) | InfoTech Commercial Item Category Code  |
-| infoTechCommercialItemCategoryDescription  (string, optional) | InfoTech Commercial Item Category Description  |
-| useOfEPADesignatedCode  (string, optional) | Use Of EPA Designated Code  |
-| useOfEPADesignatedDescription  (string, optional) | Use Of EPA Designated Description  |
-| countryOfProductOrServiceOriginCode  (string, optional) | Country Of Product Or Service Origin Code  |
-| countryOfProductOrServiceOriginDescription  (string, optional) | Country Of Product Or Service Origin Description  |
-| placeOfManufactureCode  (string, optional) | Place Of Manufacture Code  |
-| placeOfManufactureDescription  (string, optional) | Place Of Manufacture Description  |
-| vendorName  (string, optional) | Vendor Name  |
-| vendorAlternateName  (string, optional) | Vendor Alternate Name  |
-| vendorLegalOrganizationName  (string, optional) | Vendor Legal Organization Name  |
-| doingBusinessAsName  (string, optional) | Doing Business As Name  |
-| isAlaskanNativeCorporationOwnedFirm  (string, optional) | Is Alaskan Native Corporation Owned Firm  |
-| isAmericanIndianOwned  (string, optional) | Is American Indian Owned  |
-| isIndianTribe  (string, optional) | Is Indian Tribe  |
-| isNativeHawaiianOrganizationOwnedFirm  (string, optional) | Is Native Hawaiian Organization Owned Firm  |
-| isTriballyOwnedFirm  (string, optional) | Is Tribally Owned Firm  |
-| isVeteranOwnedBusiness  (string, optional) | Is Veteran Owned Business  |
-| isServiceDisabledVeteranOwnedBusiness  (string, optional) | Is Service Disabled Veteran Owned Business  |
-| isWomenOwnedBusiness(string, optional) | Is Women Owned Business  |
-| isWomenOwnedSmallBusiness  (string, optional) | Is Women Owned Small Business  |
-| isEconomicallyDisadvantagedWomenOwnedSmallBusiness  (string, optional) | Is Economically Disadvantaged Women Owned Small Business  |
-| isJointVentureWomenOwnedSmallBusiness  (string, optional) | Is Joint Venture Women Owned Small Business  |
-| isJointVentureEconomicallyDisadvantagedWomenOwnedSmallBusiness  (string, optional) | Is Joint Venture Economically Disadvantaged Women Owned Small Business  |
-| isMinorityOwnedBusiness  (string, optional) | Is Minority Owned Business  |
-| isSubcontinentAsianAmericanOwned  (string, optional) | Is Subcontinent Asian American Owned  |
-| isAsianPacificAmericanOwned  (string, optional) | Is Asian Pacific American Owned  |
-| isBlackAmericanOwned  (string, optional) | Is Black American Owned  |
-| isHispanicAmericanOwned  (string, optional) | Is Hispanic American Owned  |
-| isNativeAmericanOwned  (string, optional) | Is Native American Owned  |
-| isOtherMinorityOwned  (string, optional) | Is Other Minority Owned  |
-| isVerySmallBusiness  (string, optional) | Is Very Small Business  |
-| isCommunityDevelopmentCorporationOwnedFirm  (string, optional) | Is Community Development Corporation Owned Firm  |
-| isLaborSurplusAreaFirm  (string, optional) | Is Labor Surplus Area Firm  |
-| isUSFederalGovernment  (string, optional) | Is US Federal Government  |
-| isFederallyFundedResearchAndDevelopmentCorporation(string, optional) | Is Federally Funded Research And Development Corporation  |
-| isFederalAgency  (string, optional) | Is Federal Agency  |
-| isUSStateGovernment  (string, optional) | Is US State Government  |
-| isUSLocalGovernment  (string, optional) | Is US Local Government  |
-| isCityUSLocalGovernment  (string, optional) | Is City US Local Government  |
-| isCountyUSLocalGovernment  (string, optional) | Is County US Local Government  |
-| isInterMunicipalUSLocalGovernment  (string, optional) | Is Inter Municipal US Local Government  |
-| isLocalGovernmentOwnedUSLocalGovernment  (string, optional) | Is Local Government Owned US Local Government  |
-| isMunicipalityUSLocalGovernment  (string, optional) | Is Municipality US Local Government  |
-| isSchoolDistrictUSLocalGovernment  (string, optional) | Is School District US Local Government  |
-| isTownshipUSLocalGovernment  (string, optional) | Is Township US Local Government  |
-| isUSTribalGovernment  (string, optional) | Is US Tribal Government  |
-| isForeignGovernment  (string, optional) | Is Foreign Government  |
-| isCorporateEntityNotTaxExempt  (string, optional) | Is Corporate Entity Not Tax Exempt  |
-| isCorporateEntityTaxExempt  (string, optional) | Is Corporate Entity Tax Exempt  |
-| isPartnershipOrLimitedLiabilityPartnership  (string, optional) | Is Partnership Or Limited Liability Partnership  |
-| isSoleProprietorship  (string, optional) | Is Sole Proprietorship  |
-| isSmallAgriculturalCooperative  (string, optional) | Is Small Agricultural Cooperative  |
-| isInternationalOrganization  (string, optional) | Is International Organization  |
-| isUSGovernmentEntity  (string, optional) | Is US Government Entity  |
-| isCommunityDevelopmentCorporation  (string, optional) | Is Community Development Corporation  |
-| isDomesticShelter (string, optional) | Is Domestic Shelter  |
-| isEducationalInstitution  (string, optional) | Is Educational Institution  |
-| isFoundation  (string, optional) | Is Foundation  |
-| isHospital  (string, optional) | Is Hospital  |
-| isManufacturerOfGoods  (string, optional) | Is Manufacturer Of Goods  |
-| isVeterinaryHospital  (string, optional) | Is Veterinary Hospital  |
-| isHispanicServicingInstitution  (string, optional) | Is Hispanic Servicing Institution  |
-| receivesContracts  (string, optional) | Receives Contracts  |
-| receivesGrants  (string, optional) | Receives Grants  |
-| receivesContractsAndGrants  (string, optional) | Receives Contracts And Grants  |
-| isAirportAuthority  (string, optional) | Is Airport Authority  |
-| isCouncilOfGovernments  (string, optional) | Is Council Of Governments  |
-| isHousingAuthoritiesPublicTribal  (string, optional) | Is Housing Authorities Public Tribal  |
-| isInterstateEntity  (string, optional) | Is Interstate Entity  |
-| isPlanningCommission(string, optional) | Is Planning Commission  |
-| isPortAuthority  (string, optional) | Is Port Authority  |
-| isTransitAuthority  (string, optional) | Is Transit Authority  |
-| isSubchapterSCorporation  (string, optional) | Is Subchapter SCorporation  |
-| isLimitedLiabilityCorporation  (string, optional) | Is Limited Liability Corporation  |
-| isForeignOwned  (string, optional) | Is Foreign Owned  |
-| isForProfitOrganization  (string, optional) | Is For Profit Organization  |
-| isForNonProfitOrganization  (string, optional) | Is For Non Profit Organization  |
-| isOtherNotForProfitOrganization  (string, optional) | Is Other Not For Profit Organization  |
-| isShelteredWorkshop  (string, optional) | Is Sheltered Workshop  |
-| stateOfIncorporation  (string, optional) | State Of Incorporation  |
-| countryOfIncorporation  (string, optional) | Country Of Incorporation  |
-| organizationType  (string, optional) | Organization Type  |
-| is1862LandGrantCollege  (string, optional) | Is 1862 Land Grant College  |
-| is1890LandGrantCollege  (string, optional) | Is 1890 Land Grant College  |
-| is1994LandGrantCollege  (string, optional) | Is 1994 Land Grant College  |
-| isHistoricallyBlackCollegeOrUniversity  (string, optional) | Is Historically Black College Or University  |
-| isMinorityInstitutions  (string, optional) | Is Minority Institutions  |
-| isPrivateUniversityOrCollege  (string, optional) | Is Private University Or College  |
-| isSchoolOfForestry  (string, optional) | Is School Of Forestry  |
-| isStateControlledInstitutionOfHigherLearning  (string, optional) | Is State Controlled Institution Of Higher Learning  |
-| isTribalCollege  (string, optional) | Is Tribal College  |
-| isVeterinaryCollege  (string, optional) | Is Veterinary College  |
-| isAlaskanNativeServicingInstitution  (string, optional) | Is Alaskan Native Servicing Institution  |
-| isNativeHawaiianServicingInstitution  (string, optional) | Is Native Hawaiian Servicing Institution  |
-| isDOTCertifiedDisadvantagedBusinessEnterprise  (string, optional) | Is DOT Certified Disadvantaged Business Enterprise  |
-| isSelfCertifiedSmallDisadvantagedBusiness  (string, optional) | Is Self Certified Small Disadvantaged Business  |
-| isSelfCertifiedHubZoneJointVentureBusiness  (string, optional) | Is Self Certified Hub Zone Joint Venture Business  |
-| isSBACertifiedSmallDisadvantagedBusiness  (string, optional) | Is SBA Certified Small Disadvantaged Business  |
-| isSBACertified8aProgramParticipant  (string, optional) | Is SBA Certified 8a Program Participant  |
-| isSBACertifiedHUBZoneFirm  (string, optional) | Is SBA Certified HUB Zone Firm  |
-| isSBACertified8aJointVenture  (string, optional) | Is SBA Certified 8a Joint Venture  |
-| streetAddress1  (string, optional) | Street Address 1  |
-| streetAddress2  (string, optional) | Street Address 2  |
-| streetAddress3  (string, optional) | Street Address 3  |
-| city(string, optional) | City  |
-| stateCode  (string, optional) | State Code  |
-| state  (string, optional) | State  |
-| zipCode  (string, optional) | Zip Code  |
-| countryCode (string, optional) | Country Code  |
-| countryName  (string, optional) | Country Name  |
-| phoneNumber  (string, optional) | Phone Number  |
-| faxNumber  (string, optional) | Fax Number  |
-| congressionalDistrict  (string, optional) | Congressional District  |
-| cageCode  (string, optional) | CAGE Code  |
-| dunsNumber  (string, optional) | DUNS Number  |
-| globalParentDUNSNumber  (string, optional) | Global Parent DUNS Number  |
-| globalParentDUNSName  (string, optional) | Global Parent DUNS Name  |
-| registrationDate  (string, optional) | Registration Date  |
-| renewalDate (string, optional) | Renewal Date  |
-| divisionName  (string, optional) | Division Name  |
-| divisionNumberOrOfficeCode  (string, optional) | Division Number Or Office Code  |
-| samExceptionCode  (string, optional) | SAM Exception Code  |
-| samExceptionDescription  (string, optional) | Sam Exception Description  |
-| contractingOfficerBusinessSizeSelectionCode  (string, optional) | Contracting Officer Business Size Selection Code  |
-| contractingOfficerBusinessSizeSelectionDescription  (string, optional) | Contracting Officer Business Size Selection Description  |
-| idvContractingOfficerBusinessSizeDeterminationCode  (string, optional) | IDV Contracting Officer Business Size Determination Code  |
-| idvContractingOfficerBusinessSizeSelectionDescription  (string, optional) | IDV Contracting Officer Business Size Selection Description  |
-| idvContractingOfficerBusinessSizeDeterminationSourceCode  (string, optional) | IDV Contracting Officer Business Size Determination Source Code  |
-| idvContractingOfficerBusinessSizeDeterminationSourceDescription  (string, optional) | IDV Contracting Officer Business Size Determination Source Description  |
-| principalPlaceOfPerformanceLocationCode  (string, optional) | Principal Place Of Performance Location Code  |
-| principalPlaceOfPerformanceLocationName  (string, optional) | Principal Place  OfPerformance Location Name  |
-| principalPlaceOfPerformanceStateCode  (string, optional) | Principal Place Of Performance State Code  |
-| principalPlaceOfPerformanceStateName  (string, optional) | Principal Place Of Performance State Name  |
-| principalPlaceOfPerformanceCountryCode  (string, optional) | Principal Place Of Performance Country Code  |
-| principalPlaceOfPerformanceCountryName  (string, optional) | Principal Place Of Performance Country Name  |
-| principalPlaceOfPerformanceZipCode  (string, optional) | Principal Place Of Performance Zip Code  |
-| principalPlaceOfPerformanceCountyCode  (string, optional) | Principal Place Of Performance County Code  |
-| principalPlaceOfPerformanceCountyDescription  (string, optional) | Principal Place Of Performance County Description  |
-| principalPlaceOfPerformanceCongressionalDistrict  (string, optional) | Principal Place Of Performance Congressional District  |
-| extentCompetedCode  (string, optional) | Extent Competed Code  |
-| extentCompetedDescription  (string, optional) | Extent Competed Description  |
-| solicitationProceduresCode  (string, optional) | Solicitation Procedures Code  |
-| solicitationProceduresDescription  (string, optional) | Solicitation Procedures Description  |
-| typeOfSetAsideCode  (string, optional) | Type Of Set Aside Code  |
-| typeOfSetAsideDescription  (string, optional) | Type Of SetAside Description  |
-| typeOfSetAsideSourceCode  (string, optional) | Type Of SetAside Source Code  |
-| typeOfSetAsideSourceDescription  (string, optional) | Type Of SetAside Source Description  |
-| idvTypeOfSetAsideCode  (string, optional) | IDV Type Of SetAside Code  |
-| idvTypeOfSetAsideDescription  (string, optional) | IDV Type Of SetAside Description  |
-| evaluatedPreferenceCode  (string, optional) | Evaluated Preference Code  |
-| evaluatedPreferenceDescription  (string, optional) | Evaluated Preference Description  |
-| sbirSTTRCode  (string, optional) | SBIRSTTR Code  |
-| sbirSTTRDescription  (string, optional) | SBIRSTTR Description  |
-| fairOpportunityLimitedSourcesCode  (string, optional) | Fair Opportunity Limited Sources Code  |
-| fairOpportunityLimitedSourcesDescription  (string, optional) | Fair Opportunity Limited Sources Description  |
-| otherThanFullAndOpenCompetitionCode  (string, optional) | Other Than Full And Open Competition Code  |
-| otherThanFullAndOpenCompetitionDescription  (string, optional) | Other Than Full And Open Competition Description  |
-| numberOfOffersReceived  (integer, optional) | Number Of Offers Received  |
-| numberOfOffersSourceCode  (string, optional) | Number Of Offers SourceCode  |
-| numberOfOffersSourceDescription  (string, optional) | Number Of Offers Source Description  |
-| idvNumberOfOffers  (string, optional) | IDV Number Of Offers  |
-| commercialItemAcquisitionProceduresCode  (string, optional) | Commercial Item Acquisition Procedures Code  |
-| commercialItemAcquisitionProceduresDescription  (string, optional) | Commercial Item Acquisition Procedures Description  |
-| simplifiedProceduresForCertainCommercialItemsCode  (string, optional) | Simplified Procedures For Certain Commercial Items Code  |
-| simplifiedProceduresForCertainCommercialItemsDescription  (string, optional) | Simplified Procedures For Certain Commercial Items Description  |
-| smallBusinessCompetitivenessDemonstrationProgram  (string, optional) | Small Business Competitiveness Demonstration Program  |
-| a76ActionCode  (string, optional) | a76 Action Code  |
-| a76ActionDescription  (string, optional) | a76 Action Description  |
-| fedBizOppsCode  (string, optional) | FedBizOpps Code  |
-| fedBizOppsDescription  (string, optional) | FedBizOpps Description  |
-| localAreaSetAsideCode  (string, optional) | Local Area SetAside Code  |
-| localAreaSetAsideDescription  (string, optional) | Local Area SetAside Description  |
-| preAwardSynopsis  (string, optional) | Pre Award Synopsis  |
+| reasonForModificationCode | string  | Reason For Modification Code  |
+| reasonForModificationDescription | string  | Reason For Modification Description  | 
+| referencedIDVAgencyID | string  | Referenced IDV Agency ID  | 
+| referencedIDVAgencyName | string  | Referenced IDV Agency Name  | 
+| referencedIDVPIID | string  | Referenced IDV PIID  | 
+| referencedIDVModificationNumber | string  | Referenced IDV Modification Number  | 
+| solicitationID | string  | Solicitation ID  | 
+| documentVersion | string  | Document Version  | 
+| **listOfOtherIDs** |
+| otherAgencyID | string  | Other Agency ID  |
+| otherAgencyName | string  | Other Agency Name  | 
+| otherPIID | string  | Other PIID  | 
+| otherModificationNumber | string  | Other Modification Number  | 
+| otherTransactionNumber | string  | Other Transaction Number  | 
+| otherReferencedIDVAgencyID | string  | Other Referenced IDV Agency ID  | 
+| otherReferencedIDVAgencyName | string  | Other ReferencedI DV Agency Name  | 
+| otherReferencedIDVPIID | int  | Other Referenced IDV PIID  | 
+| otherReferencedIDVModificationNumber | string  | Other Referenced IDV ModificationNumber  | 
+| **dates** |
+| dateSigned | string  | Date Signed  | 
+| effectiveDate | string  | Effective Date  | 
+| completionDate | string  | Completion Date  | 
+| estimatedUltimateCompletionDate | string  | Estimated Ultimate Completion Date  | 
+| lastDateToOrder | string  | Last Date To Order  | 
+| fiscalYear | string  | Fiscal Year |
+| solicitationDate| string  | Solicitation Date  | 
+| **dollars** |
+| actionObligation| BigDecimal | ActionObligation  | 
+| baseDollarsObligated| BigDecimal | Base Dollars Obligated  | 
+| baseAndExercisedOptionsValue| BigDecimal | Base And Exercised Options Value  | 
+| baseAndAllOptionsValue| BigDecimal | Base And All Options Value  | 
+| totalActionObligation| BigDecimal | Total Action Obligation  | 
+| totalBaseAndExercisedOptionsValue| BigDecimal | Total Base And Exercised Options Value  | 
+| totalBaseAndAllOptionsValue| BigDecimal | Total Base And All Options Value  | 
+| nonGovernmentDollars| BigDecimal | Non Government Dollars  | 
+| totalNonGovernmentDollars| BigDecimal | Total Non Government Dollars  | 
+| totalEstimatedOrderValue| BigDecimal | Total Estimated Order Value  | 
+| feePaidForUseOfIDV| BigDecimal | Fee Paid For Use Of IDV  | 
+| **purchaserInformation** |
+| departmentID | string  | Department ID  | 
+| departmentName | string  | Department Name  | 
+| contractingOfficeAgencyID | string  | Contracting Office Agency ID  | 
+| contractingOfficeAgencyName | string  | Contracting Office Agency Name  |
+| contractingOfficeID | string  | Contracting Office ID  |
+| contractingOfficeName | string  | Contracting Office Name  |
+| fundingDepartmentId | string  | Funding Department ID  | 
+| fundingDepartmentName | string  | Funding Department Name  | 
+| fundingAgencyID | string  | Funding Agency ID  | 
+| fundingAgencyName | string  | Funding Agency Name  | 
+| fundingOfficeID | string  | Funding Office ID  | 
+| fundingOfficeName | string  | Funding Office Name  | 
+| foreignFundingCode | string  | Foreign Funding Code  | 
+| foreignFundingDescription | string  | Foreign Funding Description  | 
+| reasonForInterAgencyContracting | string  | Reason For Inter Agency Contracting   |
+| **contractMarketingData** |
+| websiteURL | string  | Website URL  | 
+| whoCanUseShortDescription | string  | Who Can Use Short Description  | 
+| whoCanUseLongDescription | string  | Who Can Use Long Description  | 
+| emailAddress | string  | Email Address  |
+| individualOrderCallLimit| BigDecimal | Individual Order Call Limit  | 
+| typeOfFeeForUseOfService | string  | Type Of Fee For Use Of Service  | 
+| fixedFeeValue | double | Fixed Fee Value  | 
+| feeRangeLowerValue | double | Fee Range Lower Value  | 
+| feeRangeUpperValue  | double | Fee Range Upper Value  | 
+| orderingProcedure | string  | Ordering Procedure  | 
+| **contractData** |
+| contractActionType | string  | Contract Action Type  | 
+| part8OrPart13 | string  | Part8 Or Part13  | 
+| typeOfContractCode | string  | Type Of Contract Code  | 
+| typeOfContractDescription | string  | Type Of Contract Description  | 
+| majorProgramCode | string  | Major Program Code  | 
+| nationalInterestActionCode | string  | National Interest Action Code  |
+| nationalInterestActionDescription | string  | National Interest Action Description  |
+| costOrPricingDataCode | string  | Cost Or Pricing Data Code  |
+| costOrPricingDataDescription | string  | Cost Or Pricing DataDescription  |
+| costAccountingStandardsClauseCode | string  | Cost Accounting Standards Clause Code  |
+| costAccountingStandardsClauseDescription | string  | Cost Accounting Standards Clause Description  |
+| descriptionOfContractRequirement | string  | Description Of Contract Requirement  |
+| inherentlyGovernmentalCode | string  | Inherently Governmental Code  |
+| inherentlyGovernmentalDescription | string  | Inherently Governmental Description  |
+| gfpCode | string  | GFP Code  |
+| gfpDescription | string  | GFP Description  |
+| seaTransportationCode | string  | Sea Transportation Code  |
+| seaTransportationDescription | string  | Sea Transportation Description  |
+| undefinitizedActionCode  | string  | Undefinitized Action Code  |
+| undefinitizedActionDescription  | string  | Undefinitized Action Description  |
+| consolidatedContractCode  | string  | Consolidated Contract Code  |
+| consolidatedContractDescription  | string  | Consolidated Contract Description  |
+| performanceBasedServiceAcquisitionCode  | string  | Performance Based Service Acquisition Code  |
+| performanceBasedServiceAcquisitionDescription  | string  | Performance Based Service Acquisition Description  |
+| multiyearContractCode  | string  | Multi year Contract Code  |
+| multiyearContractDescription  | string  | Multi Year Contract Description  | 
+| treasuryAccountSymbolAgencyIdentifier  | string  | Treasury Account Symbol Agency Identifier  |
+| treasuryAccountSymbolMainAccount  | string  | Treasury Account Symbol Main Account  |
+| treasuryAccountSymbolSubAccount  | string  | Treasury Account Symbol Sub Account  | 
+| subLevelPrefixCode  | string  | Sub Level Prefix Code  |
+| allocationTransferAgencyIdentifier  | string  | Allocation Transfer Agency Identifier  |
+| beginningPeriodOfAvailability  | string  | Beginning Period Of Availability  |
+| endingPeriodOfAvailability  | string  | Ending Period Of Availability  |
+| obligatedAmountTAS  | string  | Obligated Amount TAS  |
+| initiative  | string  | Initiative  |
+| referencedIDVPart8OrPart13  | string  | Referenced IDV Part8 Or Part13  |
+| referencedIDVMultipleOrSingle  | string  | Referenced IDV Multiple Or Single  |
+| referencedIDVTypeCode  | string  | Referenced IDV Type Code  |
+| referencedIDVTypeDescription  | string  | Referenced IDV Type Description  |
+| typeOfIDCCode  | string  | Type Of IDC Code  |
+| typeOfIDCDescription  | string  | Type Of IDC Description  |
+| multipleOrSingleAwardIDV  | string  | Multiple Or Single Award IDV  |
+| programAcronym  | string  | Program Acronym  |
+| contingencyHumanitarianPeacekeepingOperationCode  | string  | Contingency Humanitarian Peace keeping Operation Code  |
+| contingencyHumanitarianPeacekeepingOperationDescription  | string  | Contingency Humanitarian Peace keeping Operation Description  |
+| contractFinancingCode  | string  | Contract Financing Code  |
+| contractFinancingDescription  | string  | Contract Financing Description  |
+| purchaseCardPaymentMethodCode  | string  | Purchase Card Payment Method Code  |
+| purchaseCardPaymentMethodDescription  | string  | Purchase Card Payment Method Description  |
+| numberOfActions  | integer | Number Of Actions  |
+| typeOfAgreement  | string  | Type Of Agreement  |
+| nontraditionalGovernmentContractorParticipationCode  | string  | Non Traditional Government Contractor Participation Code  |
+| nontraditionalGovernmentContractorParticipationDescription  | string  | Non Traditional Government Contractor Participation Description  |
+| **legislativeMandates** |
+| clingerCohenActCode  | string  | Clinger Cohen Act Code  |
+| clingerCohenActDescription  | string  | Clinger Cohen Act Description  |
+| walshHealeyActCode  | string  | Walsh Healey Act Code(Pre-V1.5)/ materialsSuppliesArticlesEquipCode (V1.5).  |
+| walshHealeyActDescription  | string  | Walsh Healey Act Description(Pre-V1.5)/ materialsSuppliesArticlesEquipDescription (V1.5).  |
+| serviceContractActCode  | string  | Service Contract Act Code(Pre-V1.5)/ laborStandardsCode (V1.5)  |
+| serviceContractActDescription  | string  | Service Contract Act Description(Pre-V1.5)/ laborStandardsDescription (V1.5)  |
+| davisBaconActCode  | string  | DavisBacon Act Code(Pre-V1.5)/ constructionWageRateReqsCode (V1.5)  |
+| davisBaconActDescription  | string  | DavisBacon Act Description(Pre-V1.5)/ constructionWageRateReqsDescription (V1.5).  |
+| additionalReportingCode  | string  | Additional Reporting Code  |
+| additionalReportingDescription  | string  | Additional Reporting Description  |
+| interagencyContractingAuthorityCode  | string  | Interagency Contracting Authority Code  |
+| interagencyContractingAuthorityDescription  | string  | Interagency Contracting Authority Description  |
+| otherInteragencyContractingStatutoryAuthority  | string  | Other Interagency Contracting Statutory Authority  |
+| **productOrServiceInformation** |
+| productOrServiceCode  | string  | Product Or Service Code  |
+| productOrService  | string  | Product Or Service  |
+| productOrServiceDescription  | string  | Product Or Service Description  |
+| bundledContractCode  | string  | Bundled Contract Code  |
+| bundledContractDescription  | string  | Bundled Contract Description  |
+| claimantProgramDescription  | string  | Claimant Program Description  |
+| principalNAICSCode  | string  | Principal NAICS Code  |
+| principalNAICSDescription  | string  | Principal NAICS Description  |
+| naicsSourceCode | string  | NAICS Source Code  |
+| naicsSourceDescription  | string  | NAICS Source Description  |
+| idvNAICSCode  | string  | IDV NAICS Code  |
+| idvNAICSDescription  | string  | IDV NAICS Description  |
+| recoveredMaterialsSustainabilityCode  | string  | Recovered Materials Sustainability Code  |
+| recoveredMaterialsSustainabilityDescription  | string  | Recovered Materials Sustainability Description  |
+| domesticOrForeignEntityCode  | string  | Domestic Or Foreign Entity Code  |
+| domesticOrForeignEntityDescription  | string  | Domestic Or Foreign Entity Description  |
+| dodAcquisitionProgramCode | string  | DOD Acquisition Program Code  |
+| dodAcquisitionProgramDescription  | string  | DOD Acquisition Program Description  |
+| infoTechCommercialItemCategoryCode  | string  | InfoTech Commercial Item Category Code  |
+| infoTechCommercialItemCategoryDescription  | string  | InfoTech Commercial Item Category Description  |
+| useOfEPADesignatedCode  | string  | Use Of EPA Designated Code  |
+| useOfEPADesignatedDescription  | string  | Use Of EPA Designated Description  |
+| countryOfProductOrServiceOriginCode  | string  | Country Of Product Or Service Origin Code  |
+| countryOfProductOrServiceOriginDescription  | string  | Country Of Product Or Service Origin Description  |
+| placeOfManufactureCode  | string  | Place Of Manufacture Code  |
+| placeOfManufactureDescription  | string  | Place Of Manufacture Description  |
+| **vendorInformation** |
+| **vendorInformation --> vendorHeader**   |
+| vendorName  | string  | Vendor Name  |
+| vendorAlternateName  | string  | Vendor Alternate Name  |
+| vendorLegalOrganizationName  | string  | Vendor Legal Organization Name  |
+| doingBusinessAsName  | string  | Doing Business As Name  |
+| **vendorInformation --> vendorSocioEconomicIndicators**   |
+| isAlaskanNativeCorporationOwnedFirm  | string  | Is Alaskan Native Corporation Owned Firm  |
+| isAmericanIndianOwned  | string  | Is American Indian Owned  |
+| isIndianTribe  | string  | Is Indian Tribe  |
+| isNativeHawaiianOrganizationOwnedFirm  | string  | Is Native Hawaiian Organization Owned Firm  |
+| isTriballyOwnedFirm  | string  | Is Tribally Owned Firm  |
+| isVeteranOwnedBusiness  | string  | Is Veteran Owned Business  |
+| isServiceDisabledVeteranOwnedBusiness  | string  | Is Service Disabled Veteran Owned Business  |
+| isWomenOwnedBusiness| string  | Is Women Owned Business  |
+| isWomenOwnedSmallBusiness  | string  | Is Women Owned Small Business  |
+| isEconomicallyDisadvantagedWomenOwnedSmallBusiness  | string  | Is Economically Disadvantaged Women Owned Small Business  |
+| isJointVentureWomenOwnedSmallBusiness  | string  | Is Joint Venture Women Owned Small Business  |
+| isJointVentureEconomicallyDisadvantagedWomenOwnedSmallBusiness  | string  | Is Joint Venture Economically Disadvantaged Women Owned Small Business  |
+| isMinorityOwnedBusiness  | string  | Is Minority Owned Business  |
+| isSubcontinentAsianAmericanOwned  | string  | Is Subcontinent Asian American Owned  |
+| isAsianPacificAmericanOwned  | string  | Is Asian Pacific American Owned  |
+| isBlackAmericanOwned  | string  | Is Black American Owned  |
+| isHispanicAmericanOwned  | string  | Is Hispanic American Owned  |
+| isNativeAmericanOwned  | string  | Is Native American Owned  |
+| isOtherMinorityOwned  | string  | Is Other Minority Owned  |
+| isVerySmallBusiness  | string  | Is Very Small Business  |
+| **vendorInformation --> vendorBusinessTypes**   |
+| isCommunityDevelopmentCorporationOwnedFirm  | string  | Is Community Development Corporation Owned Firm  |
+| isLaborSurplusAreaFirm  | string  | Is Labor Surplus Area Firm  |
+| isUSFederalGovernment  | string  | Is US Federal Government  |
+| isFederallyFundedResearchAndDevelopmentCorporation| string  | Is Federally Funded Research And Development Corporation  |
+| isFederalAgency  | string  | Is Federal Agency  |
+| isUSStateGovernment  | string  | Is US State Government  |
+| isUSLocalGovernment  | string  | Is US Local Government  |
+| isCityUSLocalGovernment  | string  | Is City US Local Government  |
+| isCountyUSLocalGovernment  | string  | Is County US Local Government  |
+| isInterMunicipalUSLocalGovernment  | string  | Is Inter Municipal US Local Government  |
+| isLocalGovernmentOwnedUSLocalGovernment  | string  | Is Local Government Owned US Local Government  |
+| isMunicipalityUSLocalGovernment  | string  | Is Municipality US Local Government  |
+| isSchoolDistrictUSLocalGovernment  | string  | Is School District US Local Government  |
+| isTownshipUSLocalGovernment  | string  | Is Township US Local Government  |
+| isUSTribalGovernment  | string  | Is US Tribal Government  |
+| isForeignGovernment  | string  | Is Foreign Government  |
+| isCorporateEntityNotTaxExempt  | string  | Is Corporate Entity Not Tax Exempt  |
+| isCorporateEntityTaxExempt  | string  | Is Corporate Entity Tax Exempt  |
+| isPartnershipOrLimitedLiabilityPartnership  | string  | Is Partnership Or Limited Liability Partnership  |
+| isSoleProprietorship  | string  | Is Sole Proprietorship  |
+| isSmallAgriculturalCooperative  | string  | Is Small Agricultural Cooperative  |
+| isInternationalOrganization  | string  | Is International Organization  |
+| isUSGovernmentEntity  | string  | Is US Government Entity  |
+| **vendorInformation --> vendorLineOfBusiness**   |
+| isCommunityDevelopmentCorporation  | string  | Is Community Development Corporation  |
+| isDomesticShelter | string  | Is Domestic Shelter  |
+| isEducationalInstitution  | string  | Is Educational Institution  |
+| isFoundation  | string  | Is Foundation  |
+| isHospital  | string  | Is Hospital  |
+| isManufacturerOfGoods  | string  | Is Manufacturer Of Goods  |
+| isVeterinaryHospital  | string  | Is Veterinary Hospital  |
+| isHispanicServicingInstitution  | string  | Is Hispanic Servicing Institution  |
+| **vendorInformation --> vendorRelationshipWithFederalGovernment**   |
+| receivesContracts  | string  | Receives Contracts  |
+| receivesGrants  | string  | Receives Grants  |
+| receivesContractsAndGrants  | string  | Receives Contracts And Grants  |
+| **vendorInformation --> vendorTypeOfGovernmentEntity**   |
+| isAirportAuthority  | string  | Is Airport Authority  |
+| isCouncilOfGovernments  | string  | Is Council Of Governments  |
+| isHousingAuthoritiesPublicTribal  | string  | Is Housing Authorities Public Tribal  |
+| isInterstateEntity  | string  | Is Interstate Entity  |
+| isPlanningCommission| string  | Is Planning Commission  |
+| isPortAuthority  | string  | Is Port Authority  |
+| isTransitAuthority  | string  | Is Transit Authority  |
+| **vendorInformation --> vendorOrganizationFactors**   |
+| isSubchapterSCorporation  | string  | Is Subchapter SCorporation  |
+| isLimitedLiabilityCorporation  | string  | Is Limited Liability Corporation  |
+| isForeignOwned  | string  | Is Foreign Owned  |
+| isForProfitOrganization  | string  | Is For Profit Organization  |
+| isForNonProfitOrganization  | string  | Is For Non Profit Organization  |
+| isOtherNotForProfitOrganization  | string  | Is Other Not For Profit Organization  |
+| isShelteredWorkshop  | string  | Is Sheltered Workshop  |
+| stateOfIncorporation  | string  | State Of Incorporation  |
+| countryOfIncorporation  | string  | Country Of Incorporation  |
+| organizationType  | string  | Organization Type  |
+| **vendorInformation --> vendorTypeOfEducationalEntity**   |
+| is1862LandGrantCollege  | string  | Is 1862 Land Grant College  |
+| is1890LandGrantCollege  | string  | Is 1890 Land Grant College  |
+| is1994LandGrantCollege  | string  | Is 1994 Land Grant College  |
+| isHistoricallyBlackCollegeOrUniversity  | string  | Is Historically Black College Or University  |
+| isMinorityInstitutions  | string  | Is Minority Institutions  |
+| isPrivateUniversityOrCollege  | string  | Is Private University Or College  |
+| isSchoolOfForestry  | string  | Is School Of Forestry  |
+| isStateControlledInstitutionOfHigherLearning  | string  | Is State Controlled Institution Of Higher Learning  |
+| isTribalCollege  | string  | Is Tribal College  |
+| isVeterinaryCollege  | string  | Is Veterinary College  |
+| isAlaskanNativeServicingInstitution  | string  | Is Alaskan Native Servicing Institution  |
+| isNativeHawaiianServicingInstitution  | string  | Is Native Hawaiian Servicing Institution  |
+| **vendorInformation --> vendorCertifications**   |
+| isDOTCertifiedDisadvantagedBusinessEnterprise  | string  | Is DOT Certified Disadvantaged Business Enterprise  |
+| isSelfCertifiedSmallDisadvantagedBusiness  | string  | Is Self Certified Small Disadvantaged Business  |
+| isSelfCertifiedHubZoneJointVentureBusiness  | string  | Is Self Certified Hub Zone Joint Venture Business  |
+| isSBACertifiedSmallDisadvantagedBusiness  | string  | Is SBA Certified Small Disadvantaged Business  |
+| isSBACertified8aProgramParticipant  | string  | Is SBA Certified 8a Program Participant  |
+| isSBACertifiedHUBZoneFirm  | string  | Is SBA Certified HUB Zone Firm  |
+| isSBACertified8aJointVenture  | string  | Is SBA Certified 8a Joint Venture  |
+| **vendorInformation --> vendorLocation**   |
+| streetAddress1  | string  | Street Address 1  |
+| streetAddress2  | string  | Street Address 2  |
+| streetAddress3  | string  | Street Address 3  |
+| city| string  | City  |
+| stateCode  | string  | State Code  |
+| state  | string  | State  |
+| zipCode  | string  | Zip Code  |
+| countryCode | string  | Country Code  |
+| countryName  | string  | Country Name  |
+| phoneNumber  | string  | Phone Number  |
+| faxNumber  | string  | Fax Number  |
+| congressionalDistrict  | string  | Congressional District  |
+| **vendorInformation --> vendorDUNSInformation**   |
+| cageCode  | string  | CAGE Code  |
+| dunsNumber  | string  | DUNS Number  |
+| globalParentDUNSNumber  | string  | Global Parent DUNS Number  |
+| globalParentDUNSName  | string  | Global Parent DUNS Name  |
+| **vendorInformation --> vendorSamRegistrationDetails**   |
+| registrationDate  | string  | Registration Date  |
+| renewalDate | string  | Renewal Date  |
+| divisionName  | string  | Division Name  |
+| divisionNumberOrOfficeCode  | string  | Division Number Or Office Code  |
+| samExceptionCode  | string  | SAM Exception Code  |
+| samExceptionDescription  | string  | Sam Exception Description  |
+| **vendorInformation --> contractingOfficerBusinessSizeDetermination**   |
+| contractingOfficerBusinessSizeSelectionCode  | string  | Contracting Officer Business Size Selection Code  |
+| contractingOfficerBusinessSizeSelectionDescription  | string  | Contracting Officer Business Size Selection Description  |
+| idvContractingOfficerBusinessSizeDeterminationCode  | string  | IDV Contracting Officer Business Size Determination Code  |
+| idvContractingOfficerBusinessSizeSelectionDescription  | string  | IDV Contracting Officer Business Size Selection Description  |
+| idvContractingOfficerBusinessSizeDeterminationSourceCode  | string  | IDV Contracting Officer Business Size Determination Source Code  |
+| idvContractingOfficerBusinessSizeDeterminationSourceDescription  | string  | IDV Contracting Officer Business Size Determination Source Description  |
+| **principalPlaceOfPerformance**   |
+| principalPlaceOfPerformanceLocationCode  | string  | Principal Place Of Performance Location Code  |
+| principalPlaceOfPerformanceLocationName  | string  | Principal Place  OfPerformance Location Name  |
+| principalPlaceOfPerformanceStateCode  | string  | Principal Place Of Performance State Code  |
+| principalPlaceOfPerformanceStateName  | string  | Principal Place Of Performance State Name  |
+| principalPlaceOfPerformanceCountryCode  | string  | Principal Place Of Performance Country Code  |
+| principalPlaceOfPerformanceCountryName  | string  | Principal Place Of Performance Country Name  |
+| principalPlaceOfPerformanceZipCode  | string  | Principal Place Of Performance Zip Code  |
+| principalPlaceOfPerformanceCountyCode  | string  | Principal Place Of Performance County Code  |
+| principalPlaceOfPerformanceCountyDescription  | string  | Principal Place Of Performance County Description  |
+| principalPlaceOfPerformanceCongressionalDistrict  | string  | Principal Place Of Performance Congressional District  |
+| **competitionInformation**   |
+| extentCompetedCode  | string  | Extent Competed Code  |
+| extentCompetedDescription  | string  | Extent Competed Description  |
+| solicitationProceduresCode  | string  | Solicitation Procedures Code  |
+| solicitationProceduresDescription  | string  | Solicitation Procedures Description  |
+| typeOfSetAsideCode  | string  | Type Of Set Aside Code  |
+| typeOfSetAsideDescription  | string  | Type Of SetAside Description  |
+| typeOfSetAsideSourceCode  | string  | Type Of SetAside Source Code  |
+| typeOfSetAsideSourceDescription  | string  | Type Of SetAside Source Description  |
+| idvTypeOfSetAsideCode  | string  | IDV Type Of SetAside Code  |
+| idvTypeOfSetAsideDescription  | string  | IDV Type Of SetAside Description  |
+| evaluatedPreferenceCode  | string  | Evaluated Preference Code  |
+| evaluatedPreferenceDescription  | string  | Evaluated Preference Description  |
+| sbirSTTRCode  | string  | SBIRSTTR Code  |
+| sbirSTTRDescription  | string  | SBIRSTTR Description  |
+| fairOpportunityLimitedSourcesCode  | string  | Fair Opportunity Limited Sources Code  |
+| fairOpportunityLimitedSourcesDescription  | string  | Fair Opportunity Limited Sources Description  |
+| otherThanFullAndOpenCompetitionCode  | string  | Other Than Full And Open Competition Code  |
+| otherThanFullAndOpenCompetitionDescription  | string  | Other Than Full And Open Competition Description  |
+| numberOfOffersReceived  | integer | Number Of Offers Received  |
+| numberOfOffersSourceCode  | string  | Number Of Offers SourceCode  |
+| numberOfOffersSourceDescription  | string  | Number Of Offers Source Description  |
+| idvNumberOfOffers  | string  | IDV Number Of Offers  |
+| commercialItemAcquisitionProceduresCode  | string  | Commercial Item Acquisition Procedures Code  |
+| commercialItemAcquisitionProceduresDescription  | string  | Commercial Item Acquisition Procedures Description  |
+| simplifiedProceduresForCertainCommercialItemsCode  | string  | Simplified Procedures For Certain Commercial Items Code  |
+| simplifiedProceduresForCertainCommercialItemsDescription  | string  | Simplified Procedures For Certain Commercial Items Description  |
+| smallBusinessCompetitivenessDemonstrationProgram  | string  | Small Business Competitiveness Demonstration Program  |
+| a76ActionCode  | string  | a76 Action Code  |
+| a76ActionDescription  | string  | a76 Action Description  |
+| fedBizOppsCode  | string  | FedBizOpps Code  |
+| fedBizOppsDescription  | string  | FedBizOpps Description  |
+| localAreaSetAsideCode  | string  | Local Area SetAside Code  |
+| localAreaSetAsideDescription  | string  | Local Area SetAside Description  |
+| preAwardSynopsis  | string  | Pre Award Synopsis  |
 | priceEvaluationPercentDifference  (long, optional) |  Price Evaluation Percent Difference  |
-| synopsisWaiverException  (string, optional) | Synopsis Waiver Exception  |
-| alternativeAdvertising  (string, optional) | Alternative Advertising  |
-| subcontractPlanCode  (string, optional) | Sub Contract Plan Code  |
-| subcontractPlanDescription  (string, optional) | Sub Contract Plan Description  |
-| reasonNotAwardedToSmallDisadvantagedBusinessCode  (string, optional) | Reason Not Awarded To Small Disadvantaged Business Code  |
-| reasonNotAwardedToSmallDisadvantagedBusinessDescription  (string, optional) | Reason Not Awarded To Small Disadvantaged Business Description  |
-| reasonNotAwardedToSmallBusinessCode  (string, optional) | Reason Not Awarded To Small Business Code  |
-| reasonNotAwardedToSmallBusinessDescription  (string, optional) | Reason Not Awarded To Small Business Description  |
-| offerorsProposalNumber  (string, optional) | Offerors Proposal Number  |
+| synopsisWaiverException  | string  | Synopsis Waiver Exception  |
+| alternativeAdvertising  | string  | Alternative Advertising  |
+| **preferenceProgramsInformation**   |
+| subcontractPlanCode  | string  | Sub Contract Plan Code  |
+| subcontractPlanDescription  | string  | Sub Contract Plan Description  |
+| reasonNotAwardedToSmallDisadvantagedBusinessCode  | string  | Reason Not Awarded To Small Disadvantaged Business Code  |
+| reasonNotAwardedToSmallDisadvantagedBusinessDescription  | string  | Reason Not Awarded To Small Disadvantaged Business Description  |
+| reasonNotAwardedToSmallBusinessCode  | string  | Reason Not Awarded To Small Business Code  |
+| reasonNotAwardedToSmallBusinessDescription  | string  | Reason Not Awarded To Small Business Description  |
+| **nasaSpecificElementsInformation**   |
+| offerorsProposalNumber  | string  | Offerors Proposal Number  |
 | thePRNumber  (long, optional) | The PRNumber  |
-| accessionNumber  (string, optional) | Accession Number  |
-| installationUnique  (string, optional) | Installation Unique  |
-| administratorCode  (string, optional) | Administrator Code (Pre-V1.5)/ administrativeCo (V1.5)  |
-| contractingOfficerCode  (string, optional) | Contracting Officer Code  |
-| buyerCode  (string, optional) | Buyer Code  |
-| organizationCode  (string, optional) | Organization Code (Pre-V1.5)/ corOrganizationCode (V1.5)  |
-| theCOTRName  (string, optional) | The COTRName (Pre-V1.5)/ theCORName (V1.5)  |
-| alternateCOTRName  (string, optional) | Alternate COTRName (Pre-V1.5)/ alernateCORName (V1.5)  |
-| fundedThroughDate  (string, optional) | Funded Through Date  |
-| contractFundCode  (string, optional) | Contract Fund Code  |
-| managementReportingRequirements  (string, optional) | Management Reporting Requirements  |
-| accountingInstallation  (string, optional) | Accounting Installation  |
-| fieldOfScienceOrEngineering  (string, optional) | Field Of Science Or Engineering  |
-| blanketDelegation  (string, optional) | Blanket Delegation  |
-| closeout  (string, optional) | CloseOut  |
-| consentToSubcontract  (string, optional) | Consent To Subcontract  |
-| costAccountingStandardsClauseCode  (string, optional) | Cost Accounting Standards Clause Code  |
-| engineeringOrProductSurveillance  (string, optional) | Engineering Or Product Surveillance  |
-| none  (string, optional) | None  |
-| other  (string, optional) | Other  |
-| postAwardAudit  (string, optional) | Post Award Audit  |
-| propertyAdministration  (string, optional) | Property Administration  |
-| qualityAssurance  (string, optional) | Quality Assurance  |
-| security  (string, optional) | Security  |
-| transportation  (string, optional) | Transportation  |
-| principalInvestigatorFirstName  (string, optional) | Principal Investigator FirstName  |
-| principalInvestigatorMI  (string, optional) | Principal Investigator MI  |
-| principalInvestigatorLastName  (string, optional) | Principal Investigator LastName  |
-| alternatePrincipalInvestigatorFirstName  (string, optional) | Alternate Principal Investigator FirstName  |
-| alternatePrincipalInvestigatorMI  (string, optional) | Alternate Principal Investigator MI  |
-| alternatePrincipalInvestigatorLastName  (string, optional) | Alternate Principal Investigator LastName  |
-| closeOutPR  (string, optional) | CloseOut PR  |
-| advisoryAssistanceServicesContract  (string, optional) | Advisory Assistance Services Contract  |
-| supportServicesTypeContract  (string, optional) | Support Services Type Contract  |
-| newTechnologyOrPatentClause  (string, optional) | New Technology Or Patent Clause  |
-| propertyFinancialReporting  (string, optional) | Property Financial Reporting  |
-| valueEngineeringClause  (string, optional) | Value Engineering Clause  |
-| securityCode  (string, optional) | SecurityCode  |
-| isPhysicallyComplete  (string, optional) | Is Physically Complete  |
-| physicalCompletionDate  (string, optional) | Physical Completion Date  |
-| finalInvoicePaidDate  (string, optional) | Final Invoice Paid Date  |
-| solicitationIssueDate  (string, optional) | Solicitation Issue Date  |
-| cancellationDate  (string, optional) | Cancellation Date  |
-| destroyDate  (string, optional) | Destroy Date  |
-| nonFederalFundingAmount  (BigDecimal, optional) | NON Federal Funding Amount  |
-| cfdaProgramIdentificationNumberCode  (string, optional) | CFDA Program Identification Number Code  |
-| cfdaProgramIdentificationNumberDescription  (string, optional) | CFDA Program Identification Number Description  |
-| nasaStatutoryAuthority  (string, optional) | NASA Statutory Authority  |
-| createdBy  (string, optional) | Created By  |
-| createdDate  (string, optional) | Created Date  |
-| lastModifiedBy  (string, optional) | Last Modified By  |
-| lastModifiedDate  (string, optional) | Last Modified Date  |
-| status  (string, optional) | Status  |
-| approvedBy  (string, optional) | Approved By  |
-| approvedDate  (string, optional) | Approved Date  |
-| closedBy  (string, optional) | Closed By  |
-| closedDate  (string, optional) | Closed Date  |
-| closedStatus  (string, optional) | Closed Status  |
+| accessionNumber  | string  | Accession Number  |
+| installationUnique  | string  | Installation Unique  |
+| administratorCode  | string  | Administrator Code (Pre-V1.5)/ administrativeCo (V1.5)  |
+| contractingOfficerCode  | string  | Contracting Officer Code  |
+| buyerCode  | string  | Buyer Code  |
+| organizationCode  | string  | Organization Code (Pre-V1.5)/ corOrganizationCode (V1.5)  |
+| theCOTRName  | string  | The COTRName (Pre-V1.5)/ theCORName (V1.5)  |
+| alternateCOTRName  | string  | Alternate COTRName (Pre-V1.5)/ alernateCORName (V1.5)  |
+| fundedThroughDate  | string  | Funded Through Date  |
+| contractFundCode  | string  | Contract Fund Code  |
+| managementReportingRequirements  | string  | Management Reporting Requirements  |
+| accountingInstallation  | string  | Accounting Installation  |
+| fieldOfScienceOrEngineering  | string  | Field Of Science Or Engineering  |
+| blanketDelegation  | string  | Blanket Delegation  |
+| closeout  | string  | CloseOut  |
+| consentToSubcontract  | string  | Consent To Subcontract  |
+| costAccountingStandardsClauseCode  | string  | Cost Accounting Standards Clause Code  |
+| engineeringOrProductSurveillance  | string  | Engineering Or Product Surveillance  |
+| none  | string  | None  |
+| other  | string  | Other  |
+| postAwardAudit  | string  | Post Award Audit  |
+| propertyAdministration  | string  | Property Administration  |
+| qualityAssurance  | string  | Quality Assurance  |
+| security  | string  | Security  |
+| transportation  | string  | Transportation  |
+| principalInvestigatorFirstName  | string  | Principal Investigator FirstName  |
+| principalInvestigatorMI  | string  | Principal Investigator MI  |
+| principalInvestigatorLastName  | string  | Principal Investigator LastName  |
+| alternatePrincipalInvestigatorFirstName  | string  | Alternate Principal Investigator FirstName  |
+| alternatePrincipalInvestigatorMI  | string  | Alternate Principal Investigator MI  |
+| alternatePrincipalInvestigatorLastName  | string  | Alternate Principal Investigator LastName  |
+| closeOutPR  | string  | CloseOut PR  |
+| advisoryAssistanceServicesContract  | string  | Advisory Assistance Services Contract  |
+| supportServicesTypeContract  | string  | Support Services Type Contract  |
+| newTechnologyOrPatentClause  | string  | New Technology Or Patent Clause  |
+| propertyFinancialReporting  | string  | Property Financial Reporting  |
+| valueEngineeringClause  | string  | Value Engineering Clause  |
+| securityCode  | string  | SecurityCode  |
+| isPhysicallyComplete  | string  | Is Physically Complete  |
+| physicalCompletionDate  | string  | Physical Completion Date  |
+| finalInvoicePaidDate  | string  | Final Invoice Paid Date  |
+| solicitationIssueDate  | string  | Solicitation Issue Date  |
+| cancellationDate  | string  | Cancellation Date  |
+| destroyDate  | string  | Destroy Date  |
+| nonFederalFundingAmount | BigDecimal | NON Federal Funding Amount  |
+| cfdaProgramIdentificationNumberCode  | string  | CFDA Program Identification Number Code  |
+| cfdaProgramIdentificationNumberDescription  | string  | CFDA Program Identification Number Description  |
+| nasaStatutoryAuthority  | string  | NASA Statutory Authority  |
+| **transactionInformation** |
+| createdBy  | string  | Created By  |
+| createdDate  | string  | Created Date  |
+| lastModifiedBy  | string  | Last Modified By  |
+| lastModifiedDate  | string  | Last Modified Date  |
+| status  | string  | Status  |
+| approvedBy  | string  | Approved By  |
+| approvedDate  | string  | Approved Date  |
+| closedBy  | string  | Closed By  |
+| closedDate  | string  | Closed Date  |
+| closedStatus  | string  | Closed Status  |
 
 ### Awards Extract API
 
@@ -861,7 +920,95 @@ Same parameters as mentioned above, excluding page and size, apply.
 **Expected Result**
 Same response as mentioned above applies.
 
-### Additional Functionality
+### Awards Delete API
+
+**Endpoint:** https://api.sam.gov/prod/contractdata?api_key=< value >&page=< value >&size=< value >
+
+**Description** Restful endpoint to retrieve Awards delete service detail information in paginated way.
+
+**Query String Parameters**
+
+| Parameter Name | Description |
+| ---- | ----------- |
+| lastModifiedDate | Last modified date Range (max of 5 yrs range). Format: MM/dd/yyyy. Example: '02/22/1999' |
+| agencyId | Agency ID. Example: '9700'. |
+| piid | Procurement Identifier. Example: '001'. |
+| modificationNumber | Modification Number. Example: '0'. |
+| transactionNumber | A valid complete Transaction Number. Example: '0'. |
+| referenceAgencyId | Referenced IDV Agency ID. <br/>Example: '9700'. |
+| referencePiid | Reference Piid. Example: '001'. |
+| referenceModificationNumber | A valid complete value of Reference Modification Number. Example: '0'. |
+| docType | Document Type. <br/>Example: 'Award'. |
+| page | Page number for paginated results. Example: 0. |
+| size | Page size (default is 10). Example: 0. |
+| q | Free text search. <br/>Example: 'q=water' or 'q=piid:001'.  |
+
+
+**Expected Result**
+
+| Section/Sub-section/Tag | Type | Description |
+| ---- | ---- | ----------- |
+| **documentInformation** |
+| documentType | string | Document Type |
+| agencyID | string | Agency ID  |
+| agencyName | string | Agency Name |
+| piid | string | Procurement Identifier  |
+| modificationNumber | string | Modification Number |
+| transactionNumber | string | Transaction Number  |
+| referencedIDVAgencyID | string | Referenced IDV AgencyID |
+| referencedIDVPIID | string | Referenced IDV PIID  |
+| referencedIDVModificationNumber | string | Referenced IDV Modification Number |
+| **transactionInformation** |
+| lastModifiedDate | string | Last Modified Date  |
+| status | string | Status |
+
+
+
+### Awards Delete Extract API
+
+**Endpoint:** https://api.sam.gov/prod/contractdata-delete-extract?api_key=< value >&format=< Format Type >&emailId=< a valid email address >
+
+**Description**  Restful endpoint to retrieve Awards delete service detail information in the form of csv or json format instead of paginated.
+
+**Query String Parameters**
+
+| Parameter Name | Description |
+| ---- | ----------- |
+| lastModifiedDate | Last modified date Range (max of 5 yrs range). Format: MM/dd/yyyy. Example: '02/22/1999' |
+| agencyId | Agency ID. Example: '9700'. |
+| piid | Procurement Identifier. Example: '001'. |
+| modificationNumber | Modification Number. Example: '0'. |
+| transactionNumber | A valid complete Transaction Number. Example: '0'. |
+| referenceAgencyId | Referenced IDV Agency ID. <br/>Example: '9700'. |
+| referencePiid | Reference Piid. Example: '001'. |
+| referenceModificationNumber | A valid complete value of Reference Modification Number. Example: '0'. |
+| docType | Document Type. <br/>Example: 'Award'. 
+| emailId | User email Id for notification message. <br/>Example: 'test@gsa.gov'.  |
+| format | Format of the output. <br/>Example: 'csv'.  |
+| q | Free text search. <br/>Example: 'q=water' or 'q=piid:001'.  |
+
+**Expected Result**
+
+| Section/Sub-section/Tag | Type | Description |
+| ---- | ---- | ----------- |
+| **documentInformation** |
+| documentType | string | Document Type |
+| agencyID | string | Agency ID  |
+| agencyName | string | Agency Name |
+| piid | string | Procurement Identifier  |
+| modificationNumber | string | Modification Number |
+| transactionNumber | string | Transaction Number  |
+| referencedIDVAgencyID | string | Referenced IDV AgencyID |
+| referencedIDVPIID | string | Referenced IDV PIID  |
+| referencedIDVModificationNumber | string | Referenced IDV Modification Number |
+| **transactionInformation** |
+| lastModifiedDate | string | Last Modified Date  |
+| status | string | Status |
+
+
+
+
+### Additional Awards Extract Functionality
 
 1.  Schema Filtering:
     This Functionality allows users to add or remove sections to get their desired response. includeSections, 
@@ -992,8 +1139,9 @@ Same response as mentioned above applies.
 
 ## OpenAPI Specification File 
 
-You can view the full details of this API in the OpenAPI Specification file available here:
+You can view the full details of this API's in the OpenAPI Specification file available here:
 <a href="v1/openapi.yaml">Open API specification file for the Awards API</a>
+<a href="v1/awardsdelete_openapi.yaml">Open API specification file for the Awards Delete API</a>
 
 <p><small><a href="#">Back to top</a></small></p>
 
@@ -1004,12 +1152,14 @@ The API will return one of the following responses:
 | HTTP Response Code | Description |
 | ---- | ----------- |
 | 200 | Successful. Data will be returned in JSON format. |
-| 400 | Application Level Error Messages: <br><br>  * Date should be specified in the format: MM/dd/YYYY. <br><br>  * For date search, both FROM and TO should be provided (Only Applicable for Last Modified Date and Date Signed). <br><br>  * Date range between FROM and TO cannot exceed 5 years (Only Applicable for Last Modified Date). <br><br>  * Invalid Input Parameters (Only Applicable for incorrect filter name). <br><br>  * The value null/empty is not valid for parameter Query Param (q). <br><br>  * The parameters: filterName, includeSections, excludeSections, or nasaSpecificElements are not permitted inside Query Param(q). <br><br>  * Schema filtering param contains invalid value (Valid values for the Schema Filtering are includeSections, excludeSections, or nasaSpecificElements). <br><br>  * User entered values for includeSections, excludeSection should be specified in [] (Only Applicable if the value for the Schema Filtering params is not provided within []). <br><br>  * Please specify a valid value for nasaSpecificElements (Valid values are YES/NO). <br><br> * nasaSpecificElements can't be specified multiple times. <br><br>  * both excludeSections and includeSections can't be specified. <br><br>  * Please provide the filter piid in conjunction with filterName=piidAggregation. <br><br>  * Extract File Generation is Still in Progress. <br><br> * Requested File is Expired and cannot be downloaded. <br><br> * Extract File Not Found and we are not able to process your request. <br><br>  * The value null is not valid for parameter filterName. <br><br>  * The parameter filterName can only be sent once in the request URL. <br><br>  * The parameters: includeSections, excludeSections, or nasaSpecificElements are not permitted in conjunction with the parameter filterName. <br><br>  * The parameters: recoveredMaterialClauses and recoveredMaterialClsDesc are not permitted in conjunction with the value biobased for parameter filterName. <br><br>  * The parameters: closedStatus and modificationNumber are not permitted in conjunction with the value closeout for parameter filterName.  |                                                                                                                                                                                                                                                                                                                                                                                           
+| 400 | Application Level Error Messages: <br><br>  * Date should be specified in the format: MM/dd/YYYY. <br><br> * For date search, both FROM and TO should be provided (Only Applicable for Last Modified Date and Date Signed). <br><br>  * Date range between FROM and TO cannot exceed 5 years (Only Applicable for Last Modified Date). <br><br> * Invalid Input Parameters (Only Applicable for incorrect filter name). <br><br>  * The value null/empty is not valid for parameter Query Param (q). <br><br>  * The parameters: filterName, includeSections, excludeSections, or nasaSpecificElements are not permitted inside Query Param(q). <br><br> * Schema filtering param contains invalid value (Valid values for the Schema Filtering are includeSections, excludeSections, or nasaSpecificElements). <br><br>  * User entered values for includeSections, excludeSection should be specified in [] (Only Applicable if the value for the Schema Filtering params is not provided within []). <br><br>  * Please specify a valid value for nasaSpecificElements (Valid values are YES/NO). <br><br> * nasaSpecificElements can't be specified multiple times. <br><br>  * both excludeSections and includeSections can't be specified. <br><br>  * Please provide the filter piid in conjunction with filterName=piidAggregation. <br><br>  * Extract File Generation is Still in Progress. <br><br> * Requested File is Expired and cannot be downloaded. <br><br> * Extract File Not Found and we are not able to process your request. <br><br>  * The value null is not valid for parameter filterName. <br><br>  * The parameter filterName can only be sent once in the request URL. <br><br>  * The parameters: includeSections, excludeSections, or nasaSpecificElements are not permitted in conjunction with the parameter filterName. <br><br>  * The parameters: recoveredMaterialClauses and recoveredMaterialClsDesc are not permitted in conjunction with the value biobased for parameter filterName. <br><br>  * The parameters: closedStatus and modificationNumber are not permitted in conjunction with the value closeout for parameter filterName. <br><br>  * Only one PIID should be provided in the filter piid in conjunction with filterName=piidAggregation. <br><br>  * The parameters: 'emailId','format' are not permitted inside Query Param(q).  | 
 | 403 | API key is not correct or was not provided. |
 
 
 <p><small><a href="#">Back to top</a></small></p>
 
 ## Contact Us
+
+* Reach out to the beta.sam.gov team at [newsamtesting@gsa.gov](mailto:newsamtesting@gsa.gov).
 
 <p><small><a href="#">Back to top</a></small></p>
