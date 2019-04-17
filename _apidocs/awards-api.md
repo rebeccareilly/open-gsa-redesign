@@ -1038,23 +1038,23 @@ Same response as mentioned above applies.
     
       | Name  | Description |
       | ---- | ----------- |
-      | piid (string) | Award PIID  |
-      | referencedIDVPIID (string) | Referenced IDV PIID  |
-      | modifications (string) | Award Modifications  |
-      | totalActionObligation (string) | Total Action Obligation calculated for this Award family  |
-      | totalNonGovernmentDollars (string) | Total Non Government Dollars calculated for this Other Transaction Award family  |
+      | piid | string | Award PIID  |
+      | referencedIDVPIID | string | Referenced IDV PIID  |
+      | modifications | string | Award Modifications  |
+      | totalActionObligation  | string | Total Action Obligation calculated for this Award family  |
+      | totalNonGovernmentDollars | string | Total Non Government Dollars calculated for this Other Transaction Award family  |
     
     * IDV PIIDs will return the following aggregation header      
       
       | Name  | Description |
       | ---- | ----------- |
-      | piid (string) | IDV PIID  |
-      | referencedIDVPIID (string) | Referenced IDV PIID  |
-      | modifications (string) | IDV Modifications  |
-      | totalBaseAndAllOptionsValue (string) | Total Base and All Options Value calculated for this IDV family  |
-      | ordersOrCalls (string) | Orders Or Calls awarded off of the IDV PIID  |
-      | totalDollarsObligatedOnTheOrdersOrCalls (string) | Total Dollars Obligated calculated on the Orders or Calls off of the IDV family  |
-      | totalNonGovernmentDollarsObligatedOnTheOrdersOrCalls (BigDecimal) | Total Non Government Dollars calculated for the Orders off of the IDV family  |
+      | piid | string | IDV PIID  |
+      | referencedIDVPIID | string | Referenced IDV PIID  |
+      | modifications | string | IDV Modifications  |
+      | totalBaseAndAllOptionsValue | string | Total Base and All Options Value calculated for this IDV family  |
+      | ordersOrCalls | string | Orders Or Calls awarded off of the IDV PIID  |
+      | totalDollarsObligatedOnTheOrdersOrCalls | string | Total Dollars Obligated calculated on the Orders or Calls off of the IDV family  |
+      | totalNonGovernmentDollarsObligatedOnTheOrdersOrCalls | BigDecimal | Total Non Government Dollars calculated for the Orders off of the IDV family  |
     
     **NOTE:**<br>
      Some of the PIIDs (E.g: 0001) have several thousands of records in their families. When such PIIDs are searched, 
@@ -1076,40 +1076,40 @@ Same response as mentioned above applies.
     | Name  | Description |
     | ---- | ----------- |
     | documentType (string) | Document Type |
-    | agencyID (string) | Agency ID |
-    | agencyName (string) | Agency Name  |
-    | piid (string) | PIID  |
-    | modificationNumber (string) | Modification Number  |
-    | transactionNumber (string) | Transaction Number  |
-    | referencedIDVAgencyID (string) | Referenced IDV Agency ID  |
-    | referencedIDVPIID (string) | Referenced IDV PIID  |
-    | referencedIDVModificationNumber (string) | Referenced IDV Modification Number  |
-    | dateSigned (string) | Date Signed  |
-    | completionDate (string) | Completion Date  |
-    | baseAndAllOptionsValue (BigDecimal) | Base And All Options Value  |
-    | totalActionObligation (BigDecimal) | Total Action Obligation  |
-    | contractingOfficeAgencyID (string) | Contracting Office Agency ID  |
-    | contractingOfficeAgencyName (string) | Contracting Office Agency Name  | 
-    | fundingAgencyID (string) | Funding Agency ID  |
-    | fundingAgencyName (string) | Funding Agency Name  |
-    | contractActionType (string) | Contract Action Type  |
-    | typeOfContractCode (string) | Type Of Contract Code  |
-    | typeOfContractDescription (string) | Type Of Contract Description  |
-    | productOrServiceCode (string) | Product Or Service Code  |
-    | productOrService (string) | Product Or Service  |
-    | productOrServiceDescription (string) | Product Or Service Description  |
-    | recoveredMaterialsSustainabilityCode (string) | Recovered Materials Sustainability Code  |
-    | recoveredMaterialsSustainabilityDescription (string) | Recovered Materials Sustainability Description  |
-    | vendorName (string) | Vendor Name  |
-    | contractingOfficerBusinessSizeSelectionCode (string) | Contracting Officer Business Size Selection Code  |
-    | contractingOfficerBusinessSizeSelectionDescription (string) | Contracting Officer Business Size Selection Description |
-    | principalPlaceOfPerformanceLocationName (string) | Principal Place Of Performance Location Name |
-    | principalPlaceOfPerformanceStateName (string) | Principal Place Of Performance State Name |
-    | principalPlaceOfPerformanceCountryCode (string) | Principal Place Of Performance Country Code |
-    | principalPlaceOfPerformanceCountryName (string) | Principal Place Of Performance Country Name |
-    | principalPlaceOfPerformanceZipCode (string) | Principal Place Of Performance Zip Code |
-    | principalPlaceOfPerformanceCountyCode (string) | Principal Place Of Performance County Code |
-    | principalPlaceOfPerformanceCountyDescription (string) | Principal Place Of Performance County Description |
+    | agencyID | string | Agency ID |
+    | agencyName | string | Agency Name  |
+    | piid | string | PIID  |
+    | modificationNumber | string | Modification Number  |
+    | transactionNumber | string | Transaction Number  |
+    | referencedIDVAgencyID | string | Referenced IDV Agency ID  |
+    | referencedIDVPIID | string | Referenced IDV PIID  |
+    | referencedIDVModificationNumber | string | Referenced IDV Modification Number  |
+    | dateSigned | string | Date Signed  |
+    | completionDate | string | Completion Date  |
+    | baseAndAllOptionsValue | BigDecimal | Base And All Options Value  |
+    | totalActionObligation | BigDecimal | Total Action Obligation  |
+    | contractingOfficeAgencyID | string | Contracting Office Agency ID  |
+    | contractingOfficeAgencyName | string | Contracting Office Agency Name  | 
+    | fundingAgencyID | string | Funding Agency ID  |
+    | fundingAgencyName | string | Funding Agency Name  |
+    | contractActionType | string | Contract Action Type  |
+    | typeOfContractCode | string | Type Of Contract Code  |
+    | typeOfContractDescription | string | Type Of Contract Description  |
+    | productOrServiceCode | string | Product Or Service Code  |
+    | productOrService | string | Product Or Service  |
+    | productOrServiceDescription | string | Product Or Service Description  |
+    | recoveredMaterialsSustainabilityCode | string | Recovered Materials Sustainability Code  |
+    | recoveredMaterialsSustainabilityDescription | string | Recovered Materials Sustainability Description  |
+    | vendorName | string | Vendor Name  |
+    | contractingOfficerBusinessSizeSelectionCode | string | Contracting Officer Business Size Selection Code  |
+    | contractingOfficerBusinessSizeSelectionDescription | string | Contracting Officer Business Size Selection Description |
+    | principalPlaceOfPerformanceLocationName | string | Principal Place Of Performance Location Name |
+    | principalPlaceOfPerformanceStateName | string | Principal Place Of Performance State Name |
+    | principalPlaceOfPerformanceCountryCode | string | Principal Place Of Performance Country Code |
+    | principalPlaceOfPerformanceCountryName | string | Principal Place Of Performance Country Name |
+    | principalPlaceOfPerformanceZipCode | string | Principal Place Of Performance Zip Code |
+    | principalPlaceOfPerformanceCountyCode | string | Principal Place Of Performance County Code |
+    | principalPlaceOfPerformanceCountyDescription | string | Principal Place Of Performance County Description |
 
 4.  Closeout Functionality:
     Both the Awards API and Awards Extract API offer search of the Closed records via filterName=closeout (closeout is not case sensitive).
@@ -1120,21 +1120,21 @@ Same response as mentioned above applies.
     
     | Name  | Description |
     | ---- | ----------- |
-    | documentType (string) | Document Type |
-    | agencyID (string) | Agency ID |
-    | agencyName (string) | Agency Name |
-    | piid (string) | PIID |
-    | modificationNumber (string) | Modification Number |
-    | transactionNumber (string) | Transaction Number |
-    | referencedIDVAgencyID (string) | Referenced IDV Agency ID |
-    | referencedIDVPIID (string) | Referenced IDV PIID. |
-    | referencedIDVModificationNumber (string) | Referenced IDV Modification Number |
-    | dateSigned (string) | Date Signed |
-    | lastModifiedDate (string) | Last Modified Date |
-    | closedBy  (string, optional) | Closed By |
-    | closedDate  (string, optional) | Closed Date |
-    | closedStatus  (string, optional) | Closed Status |
-         
+    | documentType  | string |  Document Type |
+    | agencyID | string | Agency ID |
+    | agencyName | string | Agency Name |
+    | piid | string | PIID |
+    | modificationNumber | string | Modification Number |
+    | transactionNumber | string | Transaction Number |
+    | referencedIDVAgencyID | string | Referenced IDV Agency ID |
+    | referencedIDVPIID | string | Referenced IDV PIID. |
+    | referencedIDVModificationNumber | string | Referenced IDV Modification Number |
+    | dateSigned | string | Date Signed |
+    | lastModifiedDate | string  | Last Modified Date |
+    | closedBy | string  | Closed By |
+    | closedDate | string  | Closed Date |
+    | closedStatus | string  | Closed Status |
+    
 <p><small><a href="#">Back to top</a></small></p>
 
 ## OpenAPI Specification File 
