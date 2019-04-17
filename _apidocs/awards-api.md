@@ -5,7 +5,10 @@ banner-heading: Awards API
 
 
 ## Overview
-Public Awards data (all the data except the DoD unrevealed data) is available for end-user consumption in the form of an Awards API and an Awards Extract API that can be accessed by sending end points in the browser.
+Public Awards data (all the data except the DoD unrevealed data) is available for end-user consumption in the form of an Awards API and an 
+Awards Extract API that can be accessed by sending end points in the browser. 
+Additionally,Public Deleted Awards Data (all the data except the DoD unrevealed data) is available for end-user consumption in the form of an Awards Delete API and an 
+Awards Delete Extract API.
 
 Awards data exist in the following types:
 * Award: Delivery/Task Order, Purchase Order, Definitive Contract, BPA Call
@@ -924,29 +927,31 @@ Same response as mentioned above applies.
 
 **Endpoint:** https://api.sam.gov/prod/contractdata-delete?api_key=< value >&page=< value >&size=< value >
 
-**Description** Restful endpoint to retrieve Awards delete service detail information in paginated way.
+**Description** Restful endpoint to retrieve deleted awards in a paginated manner.
 
 **Query String Parameters**
 
 | Parameter Name | Description |
 | ---- | ----------- |
-| lastModifiedDate | Last modified date Range (max of 5 yrs range). Format: MM/dd/yyyy. Example: '02/22/1999' |
+| lastModifiedDate | Last Modified Date range. Format: MM/DD/YYYY. Example: '02/22/2019' |
 | agencyId | Agency ID. Example: '9700'. |
-| piid | Procurement Identifier. Example: '001'. |
+| piid | Procurement Identifier. Example: '0001'. |
 | modificationNumber | Modification Number. Example: '0'. |
-| transactionNumber | A valid complete Transaction Number. Example: '0'. |
-| referenceAgencyId | Referenced IDV Agency ID. <br/>Example: '9700'. |
-| referencePiid | Reference Piid. Example: '001'. |
-| referenceModificationNumber | A valid complete value of Reference Modification Number. Example: '0'. |
-| docType | Document Type. <br/>Example: 'Award'. |
-| page | Page number for paginated results. Example: 0. |
-| size | Page size (default is 10). Example: 0. |
-| q | Free text search. <br/>Example: 'q=water' or 'q=piid:001'.  |
+| transactionNumber | Transaction Number. Example: '0'. |
+| referenceAgencyId | Referenced IDV Agency ID. Example: '9700'. |
+| referencePiid | Referenced IDV PIID. Example: 'GAO15CO0005'. |
+| referenceModificationNumber | Reference IDV Modification Number. Example: '1'. |
+| docType | Document Type. Example: 'Award'. |
+| page | Page number for paginated results. Example: '0'. |
+| size | Page size (default is 10). Example: '9'. |
+| q | Free text search. Example: 'q=GAO, EXCEPT COMPTROLLER GENERA' or 'q=piid:0001'.  |
 
 
 **Expected Result**
 
-| Section/Sub-section/Tag | Type | Description |
+API response consists of two Sections and Tags underneath each of the Sections or Sub-sections
+
+| Section/Tag | Type | Description |
 | ---- | ---- | ----------- |
 | **documentInformation** |
 | documentType | string | Document Type |
@@ -955,41 +960,45 @@ Same response as mentioned above applies.
 | piid | string | Procurement Identifier  |
 | modificationNumber | string | Modification Number |
 | transactionNumber | string | Transaction Number  |
-| referencedIDVAgencyID | string | Referenced IDV AgencyID |
+| referencedIDVAgencyID | string | Referenced IDV Agency ID |
 | referencedIDVPIID | string | Referenced IDV PIID  |
 | referencedIDVModificationNumber | string | Referenced IDV Modification Number |
 | **transactionInformation** |
 | lastModifiedDate | string | Last Modified Date  |
-| status | string | Status |
+| status | string | Status as DELETED |
 
-
+<p><small><a href="#">Back to top</a></small></p>
 
 ### Awards Delete Extract API
 
 **Endpoint:** https://api.sam.gov/prod/contractdata-delete-extract?api_key=< value >&format=< Format Type >&emailId=< a valid email address >
 
-**Description**  Restful endpoint to retrieve Awards delete service detail information in the form of csv or json format instead of paginated.
+**Description**  Restful endpoint to retrieve deleted awards either in the CSV or JSON format.
 
 **Query String Parameters**
 
+API response consists of two Sections and Tags underneath each of the Sections or Sub-sections
+
 | Parameter Name | Description |
 | ---- | ----------- |
-| lastModifiedDate | Last modified date Range (max of 5 yrs range). Format: MM/dd/yyyy. Example: '02/22/1999' |
+| lastModifiedDate | Last Modified Date range. Format: MM/DD/YYYY. Example: '02/22/2019' |
 | agencyId | Agency ID. Example: '9700'. |
-| piid | Procurement Identifier. Example: '001'. |
+| piid | Procurement Identifier. Example: '0001'. |
 | modificationNumber | Modification Number. Example: '0'. |
-| transactionNumber | A valid complete Transaction Number. Example: '0'. |
-| referenceAgencyId | Referenced IDV Agency ID. <br/>Example: '9700'. |
-| referencePiid | Reference Piid. Example: '001'. |
-| referenceModificationNumber | A valid complete value of Reference Modification Number. Example: '0'. |
-| docType | Document Type. <br/>Example: 'Award'. 
-| emailId | User email Id for notification message. <br/>Example: 'test@gsa.gov'.  |
-| format | Format of the output. <br/>Example: 'csv'.  |
-| q | Free text search. <br/>Example: 'q=water' or 'q=piid:001'.  |
+| transactionNumber | Transaction Number. Example: '0'. |
+| referenceAgencyId | Referenced IDV Agency ID. Example: '9700'. |
+| referencePiid | Referenced IDV PIID. Example: 'GAO15CO0005'. |
+| referenceModificationNumber | Reference IDV Modification Number. Example: '1'. |
+| docType | Document Type. Example: 'Award'. |
+| emailId | User email Id for recieving notification message. <br/>Example: 'test@gsa.gov'.  |
+| format | Format of the output. Example: 'csv'.  |
+| q | Free text search. Example: 'q=water' or 'q=piid:001'.  |
 
 **Expected Result**
 
-| Section/Sub-section/Tag | Type | Description |
+API response consists of two Sections and Tags underneath each of the Sections or Sub-sections
+
+| Section/Tag | Type | Description |
 | ---- | ---- | ----------- |
 | **documentInformation** |
 | documentType | string | Document Type |
@@ -998,13 +1007,14 @@ Same response as mentioned above applies.
 | piid | string | Procurement Identifier  |
 | modificationNumber | string | Modification Number |
 | transactionNumber | string | Transaction Number  |
-| referencedIDVAgencyID | string | Referenced IDV AgencyID |
+| referencedIDVAgencyID | string | Referenced IDV Agency ID |
 | referencedIDVPIID | string | Referenced IDV PIID  |
 | referencedIDVModificationNumber | string | Referenced IDV Modification Number |
 | **transactionInformation** |
 | lastModifiedDate | string | Last Modified Date  |
-| status | string | Status |
+| status | string | Status as DELETED |
 
+<p><small><a href="#">Back to top</a></small></p>
 
 ### Additional Awards Extract Functionality
 
