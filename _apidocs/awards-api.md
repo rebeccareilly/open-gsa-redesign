@@ -1138,7 +1138,7 @@ Same response as mentioned above applies.
 ## OpenAPI Specification File 
 
 You can view the full details of this API's in the OpenAPI Specification file available here:
-<a href="v1/openapi.yaml">Open API specification file for the Awards API</a>
+<a href="v1/openapi.yaml">Open API specification file for the Awards API</a><br>
 <a href="v1/awardsdelete_openapi.yaml">Open API specification file for the Awards Delete API</a>
 
 <p><small><a href="#">Back to top</a></small></p>
