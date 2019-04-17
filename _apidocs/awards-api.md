@@ -24,7 +24,7 @@ Awards API:
 * It can return only the first 10,000 records. Results are returned in paginated way, 10 rows at a time.
 
 Awards Extract API:
-* It offers several optional search parameters, filtering by sections, AND, OR, NOT conditions and a free text search q to obtain the    desired data.
+* It offers several optional search parameters, filtering by sections, AND, OR, NOT conditions and a free text search q to obtain the desired data.
 * It returns asynchronous responses by sending file downloadable links in the browser and in the emails.
 * It returns data in the JSON or CSV format as selected by the user.
 * It can return only the first 1,000,000 records. All the results are returned in one file based on the file format. 
