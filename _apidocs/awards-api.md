@@ -977,7 +977,7 @@ API response consists of two Sections and Tags underneath each of the Sections o
 
 **Query String Parameters**
 
-API response consists of two Sections and Tags underneath each of the Sections or Sub-sections
+API response consists of two Sections and Tags underneath each of the Sections
 
 | Parameter Name | Description |
 | ---- | ----------- |
@@ -990,13 +990,13 @@ API response consists of two Sections and Tags underneath each of the Sections o
 | referencePiid | Referenced IDV PIID. Example: 'GAO15CO0005'. |
 | referenceModificationNumber | Reference IDV Modification Number. Example: '1'. |
 | docType | Document Type. Example: 'Award'. |
-| emailId | User email Id for recieving notification message. <br/>Example: 'test@gsa.gov'.  |
+| emailId | User email Id for receiving notification message. <br/>Example: 'test@gsa.gov'.  |
 | format | Format of the output. Example: 'csv'.  |
-| q | Free text search. Example: 'q=water' or 'q=piid:001'.  |
+| q | Free text search. Example: 'q=GAO, EXCEPT COMPTROLLER GENERA' or 'q=piid:0001'.  |
 
 **Expected Result**
 
-API response consists of two Sections and Tags underneath each of the Sections or Sub-sections
+API response consists of two Sections and Tags underneath each of the Sections
 
 | Section/Tag | Type | Description |
 | ---- | ---- | ----------- |
