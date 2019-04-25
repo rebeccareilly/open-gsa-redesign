@@ -350,7 +350,7 @@ Generating the API Key:
 | closedBy |  Closed By. <br/>Example: 'DOD_CLOSEOUT'. |          
 | closedDate |  Closed Date Format:  MM/dd/yyyy. <br/>Example: '02/22/1999'|
 | closedStatus |  Closed Status. <br/>Example: 'Y'. | 
-| ueiDUNS | Unique Entity Identifier DUNS -Allows 9 digit value. <br/>Example: '025114695' |  
+| ueiDUNS | Unique Entity Identifier DUNS 9 digit value. <br/>Example: '025114695' |  
 | entityName |  Entity Name. <br/>Example: 'ALEN'. |          
 | entityNameAlternate |  Alternate Entity Name. <br/>Example: 'ADAM'. |          
 | entityLegalOrganizationName |  Entity Legal Organization Name. <br/>Example: 'TEST'. |          
