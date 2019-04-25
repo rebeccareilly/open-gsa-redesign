@@ -2331,8 +2331,6 @@ api_key | query | string | Yes | Valid System Account API Key
 opportunityId | query | string | Yes | Opportunity ID
 duns | query | string | Yes | DUNS Number
 
-<p><small><a href="#">Back to top</a></small></p>
-
 Responses
 
 HTTP Status Code | Response Type | Reason  | Description
@@ -2412,7 +2410,127 @@ Examples
 </p>
 </details>
 
-<p><small><a href="#">Back to top</a></small></p>
+### Get Authorized Party ###
+
+------- | -------
+**Request Type** | GET
+**URL** | /opps/v2/opportunities/access/{ opportunityId}/requestAccessList
+**Summary** | Get Authorized Party list
+**Consumes** | application/json
+**Produces** | JSON
+
+Request Parameters
+
+Parameter Name | Parameter Type | Data Type  | Required | Description
+---------------|----------------|------------|----------|------------
+Authorization | Header |  string | Yes | Valid and authorized user ID
+api_key | query | string | Yes | Valid System Account API Key
+opportunityId | query | string | Yes | Opportunity ID
+status | query | string | Yes | Resource ID
+
+Responses
+
+HTTP Status Code | Response Type | Reason  | Description
+-----------------|---------------|---------|------------
+200 | JSON | To get the list of pending, approved, rejected or all request access on that notice | List of the Requestor's info and the status on their request access
+
+Examples
+
+<details>
+<summary>Response – Get Authorized Party</summary>
+<p>
+<code><pre>
+{
+    "_embedded": {
+        "authorizedPartyList": [
+            {
+                "idType": "resource",
+                "resourceName": "Secure 2.png",
+                "requestId": "cfc4c057a13e4a2c91741e46399d4a7d",
+                "actionType": "pending",
+                "fName": "Data",
+                "lName": "Entry",
+                "email": "reitestuser.de@gmail.com",
+                "phone": "1+9734323019",
+                "contractorName": "REI SYSTEMS, INC.",
+                "duns": "608999520",
+                "cageCode": "1DJP1"
+            },
+            {
+                "idType": "resource",
+                "resourceName": "Secure 1.png",
+                "requestId": "7900084914ea400e82db0152cecfbcaf",
+                "actionType": "pending",
+                "fName": "Data",
+                "lName": "Entry",
+                "email": "reitestuser.de@gmail.com",
+                "phone": "1+9734323019",
+                "contractorName": "REI SYSTEMS, INC.",
+                "duns": "608999520",
+                "cageCode": "1DJP1"
+            },
+            {
+                "idType": "notice",
+                "requestId": "4f4eeb29dcd2411dbc5a89ab0243f7c8",
+                "actionType": "approved",
+                "fName": "Data",
+                "lName": "Entry",
+                "email": "reitestuser.de@gmail.com",
+                "phone": "1+9734323019",
+                "contractorName": "REI SYSTEMS, INC.",
+                "duns": "608999520",
+                "cageCode": "1DJP1”
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "https://86samdotgovopportunitiesmodern.comp.apps-internal.prod-iae.bsp.gsa.gov/opps/v2/opportunities/access/89986c7606f7465590480e60c1053cfe/requestAccessList?status=pending"
+        }
+    }
+}
+</pre></code>
+</p>
+</details>
+
+### Add Authorized Party ###
+------- | -------
+**Request Type** | POST
+**URL** | /opps/v2/opportunities/access/{opportunityId}/createAndApproveRequest
+**Summary** | Add a Vendor as an Authorized Party for a notice to grant access to all the secured attachments across all the versions . This API will create and approve the request for the vendor.
+**Consumes** | application/json
+**Produces** | JSON
+
+Request Parameters
+
+Parameter Name | Parameter Type | Data Type  | Required | Description
+---------------|----------------|------------|----------|------------
+Authorization | Header |  string | Yes | Valid and authorized user ID
+api_key | query | string | Yes | Valid System Account API Key
+opportunityId | query | string | Yes | Opportunity ID
+Request JSON  | Body | JSON | Yes | Refer to Vendor Data JASON
+
+Responses
+HTTP Status Code | Response Type | Reason  | Description
+-----------------|---------------|---------|------------
+201 | string| Access Request created and approved for the vendor. | Action Id is returned.
+
+Examples
+<details>
+<summary>Response – Add Authorized Party</summary>
+<p>
+<code><pre>
+{
+"lname":"test",
+"fname":"test123",
+"email":"reitestuser.de@gmail.com",
+"contractorName":"",
+"duns":"608999520",
+"cageCode":""
+}
+</pre></code>
+</p>
+</details>
 
 ## OpenAPI Specification File
 
@@ -2575,7 +2693,7 @@ pointOfContact | JSON | NA | NA | NA |
 pointOfContact.type | string | p | Yes | Yes | Contact Type Note: 'p' must be in lower case
 pointOfContact.title | string |  | No | No | Contact title
 pointOfContact.fullname | string |  | No | Yes | Contact Full Name
-pointOfContact.email | string |  | No | Yes | Contact email
+pointOfContact.email | string |  | No | No | Contact email
 pointOfContact.phone | string |  | No | No | Contact Phone
 pointOfContact.fax | string |  | No  | No | Contact Fax
 placeOfPerformance | JSON | NA | NA | NA |
@@ -2995,6 +3113,17 @@ Name | Data Type | Allowed Values | Required | Description
 ivlCreate | string | forcedon, forcedoff | Yes | Indicates whether vendors can indicate interest in the organization’s Opportunities
 ivlView | string | forcedon, forcedoff | Yes | Indicates whether vendors can view other vendors interested in the organization’s Opportunities
 
+### Vendor Data JSON ###
+
+Name | Data Type | Allowed Values | Required | Description
+-----|-----------|----------------|----------|------------
+fname | string | | Yes | First name of the user
+lname | string | | Yes | Last name of the user
+email | string | | Yes | Email Id of the user
+contractorName | string | | No | Contractor Name
+duns | string | | Yes | DUNS#
+cageCode | string | | No | Cage Code
+
 <p><small><a href="#">Back to top</a></small></p>
 
 ### Error Messages
@@ -3034,7 +3163,7 @@ Award Amount | Award Detail Section-Please enter valid integer for Amount Field 
 Award Date | Award Details Section - Contract Award Date provided is in an invalid format. | Date is not in specified format | Create, Publish, Uncancel, Unarchive
 Award Date | Award Details section -Award date provided is in the past. | Award Date must be current or future date. | Create, Publish, Uncancel, Unarchive
 Award Number | Award Details Section - Contract Award Number is a required field. | Contract Award Number is missing | Publish,Uncancel, Unarchive
-Classification Code | This opportunity cannot be published. Classification Code provided did not match expected codes | Invalid PSC provided | Publish 
+Classification Code | This opportunity cannot be published. Classification Code provided did not match expected codes | Invalid PSC provided | Publish
 Deadlines Response | This opportunity cannot be published. | Response Deadline Date is required | Publish
 Description | Description is required | Description is required | Publish
 IVL | This opportunity cannot be published. Interested Vendors List Add is a required field. | Interested Vendors List Add is a required | Publish
