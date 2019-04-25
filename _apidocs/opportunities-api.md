@@ -11,6 +11,10 @@ The Opportunity Management API will allow authorized users to submit and request
 
 ## Getting Started
 
+Opportunity Management API can be accessed from Beta or Alpha via the following endpoints:
+* Beta: Coming Soon
+* Alpha:
+
 ###	Authentication and Authorization
 
 #### Generating a System Account API Key
