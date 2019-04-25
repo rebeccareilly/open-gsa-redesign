@@ -91,7 +91,6 @@ Generating the API Key:
 | referenceAgencyId | Referenced IDV Agency ID. <br/>Example: '9700'. |
 | dateSigned | Date Signed Range (Max of 5 years Range). Format: MM/dd/yyyy. Example: '02/22/1999'. |
 | contractingOfficeId | Contracting Office ID. <br/>Example: '36F797'. |
-| vendorDuns | 9 digit Vendor DUNS. <br/>Example: '003296175'. |
 | naicsCode | 6 digit NAICS Code. <br/>Example: '311812'. |	 
 | page | Page number for paginated results. Example: 0. |
 | size | Page size (default is 10). Example: 0. |
@@ -350,11 +349,12 @@ Generating the API Key:
 | approvedDate |  Approved Date Format:  MM/dd/yyyy. <br/>Example: '02/22/1999' |
 | closedBy |  Closed By. <br/>Example: 'DOD_CLOSEOUT'. |          
 | closedDate |  Closed Date Format:  MM/dd/yyyy. <br/>Example: '02/22/1999'|
-| closedStatus |  Closed Status. <br/>Example: 'Y'. |   
-| vendorName |  Vendor Name. <br/>Example: 'ALEN'. |          
-| vendorNameAlternate |  Alternate Vendor Name. <br/>Example: 'ADAM'. |          
-| vendorLegalOrganizationName |  Vendor Legal Organization Name. <br/>Example: 'TEST'. |          
-| doingBusinessAsName |  Doing Business As Name. <br/>Example: 'MSA'. |          
+| closedStatus |  Closed Status. <br/>Example: 'Y'. | 
+| ueiDUNS | Unique Entity Identifier DUNS -Allows 9 digit value. <br/>Example: '025114695' |  
+| entityName |  Entity Name. <br/>Example: 'ALEN'. |          
+| entityNameAlternate |  Alternate Entity Name. <br/>Example: 'ADAM'. |          
+| entityLegalOrganizationName |  Entity Legal Organization Name. <br/>Example: 'TEST'. |          
+| entityDoingBusinessAsName |  Entity Doing Business As Name. <br/>Example: 'MSA'. |          
 | alaskanNativeCorporation |  Is Alaskan Native Corporation Owned Firm. <br/>Example: 'NO'. |          
 | americanIndianOwned |  Is American Indian Owned. <br/>Example: 'NO'. |          
 | indianTribe |  Is Indian Tribe (Federally Recognized). <br/>Example: 'NO'. |      
@@ -444,26 +444,26 @@ Generating the API Key:
 | sbaCertified8a |  Is SBA Certified 8(a) Program Participant. <br/>Example: 'NO'. |         
 | sbaCertifiedHubZone |  Is SBA Certified Hub Zone firm. <br/>Example: 'No'. |          
 | sbaCertified8aJointVenture | Is SBA Certified 8(a) Joint Venture. <br/>Example: 'NO'. |         
-| vendorAddressLine1 |  Vendor Address Line1. <br/>Example: '1 COCA COLA '. |          
-| vendorAddressLine2 |  Vendor Address Line2. <br/>Example: 'COCA COLA PLZ'. |          
-| vendorAddressLine3 |  Vendor Address Line3. <br/>Example: 'st'. |        
-| vendorCity |  Vendor City. <br/>Example: 'ATLANTA'. |          
-| vendorState |  Vendor State. <br/>Example: 'GEORGIA'. |         
-| vendorZipCode |  Vendor ZipCode. <br/>Example: '303132499'. |         
-| vendorCountryCode |  Vendor Country Code. <br/>Example: 'USA'. |          
-| vendorPhoneNumber |  Vendor Phone Number. <br/>Example: '9999999999'. |          
-| vendorFaxNumber |  Vendor Fax Number. <br/>Example: '9999999999'. |          
-| vendorCongressionalDistrict |  Vendor Congressional District. <br/>Example: '05'. |          
+| entityAddressLine1 |  Entity Address Line1. <br/>Example: '1 COCA COLA '. |          
+| entityAddressLine2 |  Entity Address Line2. <br/>Example: 'COCA COLA PLZ'. |          
+| entityAddressLine3 |  Entity Address Line3. <br/>Example: 'st'. |        
+| entityCity |  Entity City. <br/>Example: 'ATLANTA'. |          
+| entityState |  Entity State. <br/>Example: 'GEORGIA'. |         
+| entityZipCode |  Entity ZipCode. <br/>Example: '303132499'. |         
+| entityCountryCode |  Entity Country Code. <br/>Example: 'USA'. |          
+| entityPhoneNumber |  Entity Phone Number. <br/>Example: '9999999999'. |          
+| entityFaxNumber |  Entity Fax Number. <br/>Example: '9999999999'. |          
+| entityCongressionalDistrict |  Entity Congressional District. <br/>Example: '05'. |          
 | selfCertifiedHubZoneJointVenture |  SelfCertified Hub Zone Joint Venture. <br/>Example: 'NO'. |         
-| vendorStateCode |  Vendor state code. <br/>Example: 'GA'. |
-| vendorCountry| Vendor country name . <br/>Example: 'UNITED STATES'. | 
+| entityStateCode |  Entity state code. <br/>Example: 'GA'. |
+| entityCountry| Entity country name . <br/>Example: 'UNITED STATES'. | 
 | cageCode |  CAGE Code. <br/>Example: '00000'. |  
-| globalDunsNumber |  Global Parent DUNS Number. <br/>Example: '0000000000000'. |         
-| globalVendorName |  Global Parent DUNS Name. <br/>Example: 'XYZ COMPANY'. |
-| vendorRegistrationDate |  Vendor Registration Date Format:  MM/dd/yyyy. <br/>Example: '02/22/1999'. |
-| vendorRenewalDate |  Vendor Renewal Date  format Format:  MM/dd/yyyy. <br/>Example: '02/22/1999'. |        
-| vendorDivisionName |  Vendor Division Name. <br/>Example: 'MEDICAL OFFICE'. |      
-| vendorDivisionNumber |  Vendor Division Number. <br/>Example: '1'. |             
+| ultimateParentUEIDUNS |  Ultimate Parent UEI DUNS. <br/>Example: '0000000000000'. |         
+| ultimateParentEntityName |  Ultimate Parent Entity Name. <br/>Example: 'XYZ COMPANY'. |
+| entityRegistrationDate |  Entity Registration Date Format:  MM/dd/yyyy. <br/>Example: '02/22/1999'. |
+| entityRenewalDate |  Entity Renewal Date  format Format:  MM/dd/yyyy. <br/>Example: '02/22/1999'. |        
+| entityDivisionName |  Entity Division Name. <br/>Example: 'MEDICAL OFFICE'. |      
+| entityDivisionNumber |  Entity Division Number. <br/>Example: '1'. |             
 | samExceptionCode |  SAM Exception Code. <br/>Example: '1'. |        
 | samExceptionDesc |  Sam Exception Description. <br/>Example: 'GOVERNMENT-WIDE COMMERCIAL PURCHASE CARD'. |  
 | coBusSizeDeterminationCode |  Contracting Officer's Business Size Selection Code. <br/>Example: 'O'. |    
@@ -654,13 +654,14 @@ API response consists of Sections, Sub-sections and Tags underneath each of the 
 | countryOfProductOrServiceOriginDescription  | string  | Country Of Product Or Service Origin Description  |
 | placeOfManufactureCode  | string  | Place Of Manufacture Code  |
 | placeOfManufactureDescription  | string  | Place Of Manufacture Description  |
-| **vendorInformation** |
-| **vendorInformation --> vendorHeader**   |
-| vendorName  | string  | Vendor Name  |
-| vendorAlternateName  | string  | Vendor Alternate Name  |
-| vendorLegalOrganizationName  | string  | Vendor Legal Organization Name  |
-| doingBusinessAsName  | string  | Doing Business As Name  |
-| **vendorInformation --> vendorSocioEconomicIndicators**   |
+| **entityInformation** |
+| **entityInformation --> entityHeader**   |
+| entityName  | string  | Entity Name  |
+| entityAlternateName  | string  | Entity Alternate Name  |
+| entityLegalOrganizationName  | string  | Entity Legal Organization Name  |
+| entityDoingBusinessAsName  | string  | Entity Doing Business As Name  |
+| entityNameFromContract | string  | Entity Name From Contract  |
+| **entityInformation --> entitySocioEconomicIndicators**   |
 | isAlaskanNativeCorporationOwnedFirm  | string  | Is Alaskan Native Corporation Owned Firm  |
 | isAmericanIndianOwned  | string  | Is American Indian Owned  |
 | isIndianTribe  | string  | Is Indian Tribe  |
@@ -681,7 +682,7 @@ API response consists of Sections, Sub-sections and Tags underneath each of the 
 | isNativeAmericanOwned  | string  | Is Native American Owned  |
 | isOtherMinorityOwned  | string  | Is Other Minority Owned  |
 | isVerySmallBusiness  | string  | Is Very Small Business  |
-| **vendorInformation --> vendorBusinessTypes**   |
+| **entityInformation --> entityBusinessTypes**   |
 | isCommunityDevelopmentCorporationOwnedFirm  | string  | Is Community Development Corporation Owned Firm  |
 | isLaborSurplusAreaFirm  | string  | Is Labor Surplus Area Firm  |
 | isUSFederalGovernment  | string  | Is US Federal Government  |
@@ -705,7 +706,7 @@ API response consists of Sections, Sub-sections and Tags underneath each of the 
 | isSmallAgriculturalCooperative  | string  | Is Small Agricultural Cooperative  |
 | isInternationalOrganization  | string  | Is International Organization  |
 | isUSGovernmentEntity  | string  | Is US Government Entity  |
-| **vendorInformation --> vendorLineOfBusiness**   |
+| **entityInformation --> entityLineOfBusiness**   |
 | isCommunityDevelopmentCorporation  | string  | Is Community Development Corporation  |
 | isDomesticShelter | string  | Is Domestic Shelter  |
 | isEducationalInstitution  | string  | Is Educational Institution  |
@@ -714,11 +715,11 @@ API response consists of Sections, Sub-sections and Tags underneath each of the 
 | isManufacturerOfGoods  | string  | Is Manufacturer Of Goods  |
 | isVeterinaryHospital  | string  | Is Veterinary Hospital  |
 | isHispanicServicingInstitution  | string  | Is Hispanic Servicing Institution  |
-| **vendorInformation --> vendorRelationshipWithFederalGovernment**   |
+| **entityInformation --> entityRelationshipWithFederalGovernment**   |
 | receivesContracts  | string  | Receives Contracts  |
 | receivesGrants  | string  | Receives Grants  |
 | receivesContractsAndGrants  | string  | Receives Contracts And Grants  |
-| **vendorInformation --> vendorTypeOfGovernmentEntity**   |
+| **entityInformation --> entityTypeOfGovernmentEntity**   |
 | isAirportAuthority  | string  | Is Airport Authority  |
 | isCouncilOfGovernments  | string  | Is Council Of Governments  |
 | isHousingAuthoritiesPublicTribal  | string  | Is Housing Authorities Public Tribal  |
@@ -726,7 +727,7 @@ API response consists of Sections, Sub-sections and Tags underneath each of the 
 | isPlanningCommission| string  | Is Planning Commission  |
 | isPortAuthority  | string  | Is Port Authority  |
 | isTransitAuthority  | string  | Is Transit Authority  |
-| **vendorInformation --> vendorOrganizationFactors**   |
+| **entityInformation --> entityOrganizationFactors**   |
 | isSubchapterSCorporation  | string  | Is Subchapter SCorporation  |
 | isLimitedLiabilityCorporation  | string  | Is Limited Liability Corporation  |
 | isForeignOwned  | string  | Is Foreign Owned  |
@@ -734,10 +735,10 @@ API response consists of Sections, Sub-sections and Tags underneath each of the 
 | isForNonProfitOrganization  | string  | Is For Non Profit Organization  |
 | isOtherNotForProfitOrganization  | string  | Is Other Not For Profit Organization  |
 | isShelteredWorkshop  | string  | Is Sheltered Workshop  |
-| stateOfIncorporation  | string  | State Of Incorporation  |
-| countryOfIncorporation  | string  | Country Of Incorporation  |
-| organizationType  | string  | Organization Type  |
-| **vendorInformation --> vendorTypeOfEducationalEntity**   |
+| entityStateOfIncorporation  | string  | Entity State Of Incorporation  |
+| entityCountryOfIncorporation  | string  | Entity Country Of Incorporation  |
+| entityOrganizationType  | string  | Entity Organization Type  |
+| **entityInformation --> entityTypeOfEducationalEntity**   |
 | is1862LandGrantCollege  | string  | Is 1862 Land Grant College  |
 | is1890LandGrantCollege  | string  | Is 1890 Land Grant College  |
 | is1994LandGrantCollege  | string  | Is 1994 Land Grant College  |
@@ -750,7 +751,7 @@ API response consists of Sections, Sub-sections and Tags underneath each of the 
 | isVeterinaryCollege  | string  | Is Veterinary College  |
 | isAlaskanNativeServicingInstitution  | string  | Is Alaskan Native Servicing Institution  |
 | isNativeHawaiianServicingInstitution  | string  | Is Native Hawaiian Servicing Institution  |
-| **vendorInformation --> vendorCertifications**   |
+| **entityInformation --> entityCertifications**   |
 | isDOTCertifiedDisadvantagedBusinessEnterprise  | string  | Is DOT Certified Disadvantaged Business Enterprise  |
 | isSelfCertifiedSmallDisadvantagedBusiness  | string  | Is Self Certified Small Disadvantaged Business  |
 | isSelfCertifiedHubZoneJointVentureBusiness  | string  | Is Self Certified Hub Zone Joint Venture Business  |
@@ -758,32 +759,32 @@ API response consists of Sections, Sub-sections and Tags underneath each of the 
 | isSBACertified8aProgramParticipant  | string  | Is SBA Certified 8a Program Participant  |
 | isSBACertifiedHUBZoneFirm  | string  | Is SBA Certified HUB Zone Firm  |
 | isSBACertified8aJointVenture  | string  | Is SBA Certified 8a Joint Venture  |
-| **vendorInformation --> vendorLocation**   |
-| streetAddress1  | string  | Street Address 1  |
-| streetAddress2  | string  | Street Address 2  |
-| streetAddress3  | string  | Street Address 3  |
-| city| string  | City  |
-| stateCode  | string  | State Code  |
-| state  | string  | State  |
-| zipCode  | string  | Zip Code  |
-| countryCode | string  | Country Code  |
-| countryName  | string  | Country Name  |
-| phoneNumber  | string  | Phone Number  |
-| faxNumber  | string  | Fax Number  |
-| congressionalDistrict  | string  | Congressional District  |
-| **vendorInformation --> vendorDUNSInformation**   |
-| cageCode  | string  | CAGE Code  |
-| dunsNumber  | string  | DUNS Number  |
-| globalParentDUNSNumber  | string  | Global Parent DUNS Number  |
-| globalParentDUNSName  | string  | Global Parent DUNS Name  |
-| **vendorInformation --> vendorSamRegistrationDetails**   |
-| registrationDate  | string  | Registration Date  |
-| renewalDate | string  | Renewal Date  |
-| divisionName  | string  | Division Name  |
-| divisionNumberOrOfficeCode  | string  | Division Number Or Office Code  |
-| samExceptionCode  | string  | SAM Exception Code  |
-| samExceptionDescription  | string  | Sam Exception Description  |
-| **vendorInformation --> contractingOfficerBusinessSizeDetermination**   |
+| **entityInformation --> entityLocation**   |
+| entityStreetAddress1  | string  | Entity Street Address 1  |
+| entityStreetAddress2  | string  | Entity Street Address 2  |
+| entityStreetAddress3  | string  | Entity Street Address 3  |
+| entityCity| string  | Entity City  |
+| entityStateCode  | string  | Entity State Code  |
+| entityState  | string  | Entity State  |
+| entityZipCode  | string  | Entity Zip Code  |
+| entityCountryCode | string  | Entity Country Code  |
+| entityCountryName  | string  | Entity Country Name  |
+| entityPhoneNumber  | string  | Entity Phone Number  |
+| entityFaxNumber  | string  | Entity Fax Number  |
+| entityCongressionalDistrict  | string  | Entity Congressional District  |
+| **entityInformation --> entityUEIDUNSInformation**   |
+| entityCageCode  | string  | Entity CAGE Code  |
+| ueiDUNS  | string  | Unique Entity Identifier DUNS  |
+| ultimateParentUEIDUNS  | string  | Ultimate Parent UEI DUNS  |
+| ultimateParentEntityName  | string  | Ultimate Parent Entity Name |
+| **entityInformation --> entitySamRegistrationDetails**   |
+| entityRegistrationDate  | string  | Entity Registration Date  |
+| entityRenewalDate | string  | Entity Renewal Date  |
+| entityDivisionName  | string  | Entity Division Name  |
+| entityDivisionNumberOrOfficeCode  | string  | Entity Division Number Or Office Code  |
+| entitySamExceptionCode  | string  | Entity SAM Exception Code  |
+| entitySamExceptionDescription  | string  | Entity Sam Exception Description  |
+| **entityInformation --> contractingOfficerBusinessSizeDetermination**   |
 | contractingOfficerBusinessSizeSelectionCode  | string  | Contracting Officer Business Size Selection Code  |
 | contractingOfficerBusinessSizeSelectionDescription  | string  | Contracting Officer Business Size Selection Description  |
 | idvContractingOfficerBusinessSizeDeterminationCode  | string  | IDV Contracting Officer Business Size Determination Code  |
@@ -1104,7 +1105,8 @@ API response consists of two Sections and Tags underneath each of the Sections
     | productOrServiceDescription | string | Product Or Service Description  |
     | recoveredMaterialsSustainabilityCode | string | Recovered Materials Sustainability Code  |
     | recoveredMaterialsSustainabilityDescription | string | Recovered Materials Sustainability Description  |
-    | vendorName | string | Vendor Name  |
+    | entityName | string | Entity Name  |
+    | entityNameFromContract | string  | Entity Name From Contract  |
     | contractingOfficerBusinessSizeSelectionCode | string | Contracting Officer Business Size Selection Code  |
     | contractingOfficerBusinessSizeSelectionDescription | string | Contracting Officer Business Size Selection Description |
     | principalPlaceOfPerformanceLocationName | string | Principal Place Of Performance Location Name |
