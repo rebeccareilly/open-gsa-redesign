@@ -2494,6 +2494,7 @@ Examples
 </details>
 
 ### Add Authorized Party ###
+
 ------- | -------
 **Request Type** | POST
 **URL** | /opps/v2/opportunities/access/{opportunityId}/createAndApproveRequest
@@ -2511,11 +2512,13 @@ opportunityId | query | string | Yes | Opportunity ID
 Request JSON  | Body | JSON | Yes | Refer to Vendor Data JASON
 
 Responses
+
 HTTP Status Code | Response Type | Reason  | Description
 -----------------|---------------|---------|------------
 201 | string| Access Request created and approved for the vendor. | Action Id is returned.
 
 Examples
+
 <details>
 <summary>Response – Add Authorized Party</summary>
 <p>
