@@ -13,7 +13,7 @@ The Opportunity Management API will allow authorized users to submit and request
 
 Opportunity Management API can be accessed from Beta or Alpha via the following endpoints:
 * Beta: Coming Soon
-* Alpha:
+* Alpha: https://api-alpha.sam.gov/prodlike/opportunity
 
 ###	Authentication and Authorization
 
@@ -147,11 +147,10 @@ far13	| FAR 13.5 - Simplified Procedures for One Source
 
 ### Create Opportunity
 
-**Endpoint:** Coming soon
 
 ------- | -------
 **Request Type** | POST
-**URL** | /opps/v1/api/create
+**URL** | /v1/api/create
 **Summary** | Create a new Draft Opportunity
 **Consumes** | application/json
 **Produces** | NA
@@ -451,11 +450,10 @@ Examples
 
 ### Publish Opportunity
 
-**Endpoint:** Coming soon
 
 ------- | -------
 **Request Type** | POST
-**URL** | /opps/v1/api/publish/{opportunityId}
+**URL** | /v1/api/publish/{opportunityId}
 **Summary** | Publish a Draft Opportunity
 **Consumes** | application/json
 **Produces** | NA
@@ -495,11 +493,11 @@ Examples
 
 ### Revise Opportunity
 
-**Endpoint:** Coming soon
+
 
 ------- | -------
 **Request Type** | POST
-**URL** | /opps/v1/api/revise/{opportunityId}
+**URL** | /v1/api/revise/{opportunityId}
 **Summary** | Create a draft version of an Opportunity for a Published Opportunity.
 **Consumes** | application/json
 **Produces** | JSON
@@ -539,11 +537,11 @@ Examples
 
 ### Update Opportunity
 
-**Endpoint:** Coming soon
+
 
 ------- | -------
 **Request Type** | PATCH
-**URL** | /opps/v1/api/update/{opportunityId}
+**URL** | /v1/api/update/{opportunityId}
 **Summary** | Update a Draft Opportunity
 **Consumes** | application/json
 **Produces** | JSON
@@ -854,11 +852,10 @@ Examples
 
 ### Opportunity History
 
-**Endpoint:** Coming soon
 
 ------- | -------
 **Request Type** | GET
-**URL** | /opps/v1/api/history/{opportunityId}
+**URL** | /v1/api/history/{opportunityId}
 **Summary** | Get history of an Opportunity
 **Consumes** | Request Parameters
 **Produces** | JSON
@@ -1010,11 +1007,11 @@ Examples
 
 ### Delete Opportunity
 
-**Endpoint:** Coming soon
+
 
 ------- | -------
 **Request Type** | DELETE
-**URL** | /opps/v1/api/delete/{opportunityId}
+**URL** | /v1/api/delete/{opportunityId}
 **Summary** |   Delete a Draft Opportunity
 **Consumes** | Request Parameters
 **Produces** | NA
@@ -1043,11 +1040,10 @@ _NA_
 
 ### Get List of Opportunities
 
-**Endpoint:** Coming soon
 
 ------- | -------
 **Request Type** | GET
-**URL** | /opps/v1/api/search
+**URL** | /v1/api/search
 **Summary** | Get list of Opportunities
 **Consumes** | Request Parameters
 **Produces** | JSON
@@ -1475,11 +1471,11 @@ Examples
 
 ### Get Opportunity by ID
 
-**Endpoint:** Coming soon
+
 
 ------- | -------
 **Request Type** | GET
-**URL** | /opps/v1/api/opportunities/{opportunityId}
+**URL** | /v1/api/opportunities/{opportunityId}
 **Summary** | Get Opportunity by Opportunity ID
 **Consumes** | Request Parameters
 **Produces** | JSON
@@ -1622,11 +1618,11 @@ Examples
 
 ### Cancel Opportunity
 
-**Endpoint:** Coming soon
+
 
 ------- | -------
 **Request Type** | POST
-**URL** | /opps/v1/api/cancel/{opportunityId}
+**URL** | /v1/api/cancel/{opportunityId}
 **Summary** | Cancel a Published Opportunity
 **Consumes** | application/json
 **Produces** | JSON
@@ -1669,11 +1665,10 @@ Examples
 
 ### Uncancel Opportunity
 
-**Endpoint:** Coming soon
 
 ------- | -------
 **Request Type** | POST
-**URL** | /opps/v1/api/uncancel/{opportunityId}
+**URL** | v1/api/uncancel/{opportunityId}
 **Summary** | Update status of a Canceled Opportunity to Published status
 **Consumes** | application/json
 **Produces** | JSON
@@ -1735,11 +1730,9 @@ Examples
 
 ### Archive Opportunity
 
-**Endpoint:** Coming soon
-
 ------- | -------
 **Request Type** | POST
-**URL** | /opps/v1/api/archive/{opportunityId}
+**URL** |/v1/api/archive/{opportunityId}
 **Summary** | Archive a Published Opportunity
 **Consumes** | application/json
 **Produces** | JSON
@@ -1779,11 +1772,9 @@ Examples
 
 ### Unarchive Opportunity
 
-**Endpoint:** Coming soon
-
 ------- | -------
 **Request Type** | POST
-**URL** | /opps/v1/api/unarchive/{opportunityId}
+**URL** |/v1/api/unarchive/{opportunityId}
 **Summary** | Update status of a Archived Opportunity to Published status
 **Consumes** | application/json
 **Produces** | JSON
@@ -1831,7 +1822,7 @@ Examples
 
 ------- | -------
 **Request Type** | POST
-**URL** | /opps/v1/api/{opportunityId}/attachments
+**URL** |/v1/api/{opportunityId}/attachments
 **Summary** | Create attachment/link to a draft Opportunity
 **Consumes** | application/json
 **Produces** | JSON
@@ -1889,11 +1880,10 @@ Examples
 
 ### Update Attachment
 
-**Endpoint:** Coming soon
 
 ------- | -------
 **Request Type** | PATCH
-**URL** | /opps/v1/api/{opportunityId}/attachments/{resourceId}
+**URL** |/v1/api/{opportunityId}/attachments/{resourceId}
 **Summary** | Update an attachment metadata on a draft Opportunity
 **Consumes** | application/json
 **Produces** | JSON
@@ -1952,11 +1942,10 @@ Examples
 
 ### Download All Attachments (metadata)
 
-**Endpoint:** Coming soon
 
 ------- | -------
 **Request Type** | GET
-**URL** | /opps/v1/api/attachments
+**URL** |/v1/api/attachments
 **Summary** | Download the all attachments metadata for an Opportunity
 **Consumes** | Request Parameters
 **Produces** | JSON
@@ -2038,11 +2027,10 @@ Examples
 
 ### Download Attachment
 
-**Endpoint:** Coming soon
 
 ------- | -------
 **Request Type** | GET
-**URL** | /opps/v1/api/resources/files/{resourceId}/download
+**URL** |/v1/api/resources/files/{resourceId}/download
 **Summary** | Download the attachment for the given Resource ID
 **Consumes** | Request Parameters
 **Produces** | file
@@ -2073,11 +2061,10 @@ _NA_
 
 ### Download Attachments as Zip
 
-**Endpoint:** Coming soon
 
 ------- | -------
 **Request Type** | GET
-**URL** | /opps/v1/api/{opportunityId}/resources/download/zip
+**URL** |/v1/api/{opportunityId}/resources/download/zip
 **Summary** | Download attachments as zip file for Opportunity
 **Consumes** | Request Parameters
 **Produces** | Zip
@@ -2104,11 +2091,9 @@ N/A
 
 ### Delete Attachment
 
-**Endpoint:** Coming soon
-
 ------- | -------
 **Request Type** | DELETE
-**URL** | /opps/v1/api/{opportunityId}/attachments/{resourceId}
+**URL** | /v1/api/{opportunityId}/attachments/{resourceId}
 **Summary** | Delete the attachments for the Resource ID and Opportunity ID.
 **Consumes** | Request Parameters
 **Produces** | JSON
@@ -2137,11 +2122,10 @@ N/A
 
 ### Get IVL (Interested Vendor List)
 
-**Endpoint:** Coming soon
 
 ------- | -------
 **Request Type** | GET
-**URL** | /opps/v1/api/{opportunityId}/ivl
+**URL** | /v1/api/{opportunityId}/ivl
 **Summary** | Get IVL of the Opportunity ID
 **Consumes** | Request Parameters
 **Produces** | JSON
@@ -2243,11 +2227,10 @@ ivl": [
 
 ### IVL Settings
 
-**Endpoint:** Coming soon
 
 ------- | -------
 **Request Type** | PUT
-**URL** | /opps/v1/api/organization/{orgId}/ivl
+**URL** |/v1/api/organization/{orgId}/ivl
 **Summary** | Update IVL Settings (on or off) for an Organization
 **Consumes** | application/json
 **Produces** | JSON
@@ -2285,11 +2268,10 @@ Examples
 
 ### Delete Vendor
 
-**Endpoint:** Coming soon
 
 ------- | -------
 **Request Type** | DELETE
-**URL** | /opps/v2/opportunities/{opportunityId}/ivl/{entityid}
+**URL** | /v2/opportunities/{opportunityId}/ivl/{entityid}
 **Summary** | Delete Vendor from IVL for Opportunity ID
 **Consumes** | Request Parameters
 **Produces** | JSON
@@ -2317,11 +2299,11 @@ N/A
 
 ### Get IVL by DUNS
 
-**Endpoint:** Coming soon
+
 
 ------- | -------
 **Request Type** | GET
-**URL** | /opps/v1/api/{opportunityId}/ivl/{duns}
+**URL** | /v1/api/{opportunityId}/ivl/{duns}
 **Summary** | Get IVL by DUNS for Opportunity ID
 **Consumes** | Request Parameters
 **Produces** | JSON
@@ -2418,7 +2400,7 @@ Examples
 
 ------- | -------
 **Request Type** | GET
-**URL** | /opps/v2/opportunities/access/{ opportunityId}/requestAccessList
+**URL** | /v2/opportunities/access/{ opportunityId}/requestAccessList
 **Summary** | Get Authorized Party list
 **Consumes** | application/json
 **Produces** | JSON
@@ -2501,7 +2483,7 @@ Examples
 
 ------- | -------
 **Request Type** | POST
-**URL** | /opps/v2/opportunities/access/{opportunityId}/createAndApproveRequest
+**URL** | /v2/opportunities/access/{opportunityId}/createAndApproveRequest
 **Summary** | Add a Vendor as an Authorized Party for a notice to grant access to all the secured attachments across all the versions . This API will create and approve the request for the vendor.
 **Consumes** | application/json
 **Produces** | JSON
@@ -2543,7 +2525,7 @@ Examples
 
 ------- | -------
 **Request Type** | GET
-**URL** | /opps/v1/api/isSolicitationNumberUnique/{parent}/{solicitationNumber}/{type}
+**URL** | /v1/api/isSolicitationNumberUnique/{parent}/{solicitationNumber}/{type}
 **Summary** | Check if solicitation number is unique. A solicitation number is unique if it is not used by another opportunity of equivalent type. For justification type, j&a and fair opportunity/limited sources justification are considered equivalent.
 **Consumes** | application/json
 **Produces** | JSON
@@ -2586,7 +2568,7 @@ Examples
 
 ------- | -------
 **Request Type** | GET
-**URL** | /opps/v1/api/opportunities/{opportunityId}/relatedopportunities/{type}
+**URL** | /v1/api/opportunities/{opportunityId}/relatedopportunities/{type}
 **Summary** | Get Related Contract Opportunities
 **Consumes** | application/json
 **Produces** | JSON
@@ -3336,6 +3318,6 @@ Duns# |	No contact match on vendor data provided.	| Not a Valid email or Duns#.	
 
 Date | Version | Description
 ------|---------------|---------
-4/25/2019 | v1.0 | Base Version 
+4/25/2019 | v1.0 | Base Version
 
 <p><small><a href="#">Back to top</a></small></p>
