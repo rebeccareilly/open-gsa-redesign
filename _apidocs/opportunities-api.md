@@ -68,6 +68,14 @@ Get IVL by DUNS | Yes | Yes | Yes
 
 <p><small><a href="#">Back to top</a></small></p>
 
+#### Secure Attachment Authorization
+
+In order to download secure attachment, user should have at least one of the below permissions:
+* Create Draft Attachment
+* Edit Draft Attachment
+* Delete Draft Attachment
+* Delete Attachment
+
 ### Lookup/Meta Data
 
 #### Notice Types
