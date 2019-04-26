@@ -2582,6 +2582,7 @@ Examples
 **Produces** | JSON
 
 Request Parameters
+
 Parameter Name | Parameter Type | Data Type  | Required | Description
 ---------------|----------------|------------|----------|------------
 Authorization |	Header |	string |	Yes |	Valid and authorized user ID
