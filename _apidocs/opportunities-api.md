@@ -2539,12 +2539,120 @@ Examples
 </p>
 </details>
 
-## OpenAPI Specification File
+### Check Unique Solicitation Number ###
 
-You can view the full details of this API in the OpenAPI Specification file available here:
-<a href="v1/openapi.json">Open API specification file for the Sample API</a>
+------- | -------
+**Request Type** | GET
+**URL** | /opps/v1/api/isSolicitationNumberUnique/{parent}/{solicitationNumber}/{type}
+**Summary** | Check if solicitation number is unique. A solicitation number is unique if it is not used by another opportunity of equivalent type. For justification type, j&a and fair opportunity/limited sources justification are considered equivalent.
+**Consumes** | application/json
+**Produces** | JSON
 
-<p><small><a href="#">Back to top</a></small></p>
+Request Parameters
+
+Parameter Name | Parameter Type | Data Type  | Required | Description
+---------------|----------------|------------|----------|------------
+Authorization |	Header |	string |	Yes |	Valid and authorized user ID
+api_key |	query |	string |	Yes |	Valid SAPI Key
+Parent |	path |	string |	No |	Parent
+SolicitationNumber |	Path |	String |	Yes |	Solicitation Number
+Type |	Path |	String |	Yes |	Type
+
+Responses
+
+HTTP Status Code | Response Type | Reason  | Description
+-----------------|---------------|---------|------------
+200 | JSON |	True/False |	True if solicitation number is unique; false if solicitation number is not unique
+
+Examples
+
+<details>
+<summary>Response – Check Unique Solicitation Number</summary>
+<p>
+<code><pre>
+{
+ “content”: true,
+ “_links”: {
+   “self”: {
+     “href”: “https://86samdotgovopportunitiesmoderncomp.apps.prod-iae.bsp.gsa.gov/opps/v2/opportunities/isSolicitationNumberUnique?solicitationNumber=PI18_SP4_Demo_th01&type=p&parent=true”
+   }
+ }
+}
+</pre></code>
+</p>
+</details>
+
+### Get Related Opportunities ###
+
+------- | -------
+**Request Type** | GET
+**URL** | /opps/v1/api/opportunities/{opportunityId}/relatedopportunities/{type}
+**Summary** | Get Related Contract Opportunities
+**Consumes** | application/json
+**Produces** | JSON
+
+Request Parameters
+Parameter Name | Parameter Type | Data Type  | Required | Description
+---------------|----------------|------------|----------|------------
+Authorization |	Header |	string |	Yes |	Valid and authorized user ID
+api_key |	query |	string |	Yes |	Valid SAPI Key
+opportunityId |	query |	string |	Yes |	Opportunity ID
+Page |	query |	Integer |	No |	Page; Default Value: 0
+Size |	query |	Integer |	No |	Size; Default value: 0
+sortBy |	query |	string |	No |	sortBy; Default Value: -modifiedOn
+Type |	Path |	String |	Yes |	Type
+
+Examples
+
+<details>
+<summary>Response – Get Related Opportunities</summary>
+<p>
+<code><pre>
+{
+  "recipientCount": 0,
+  "unparsableCount": 0,
+  "count": 1,
+  "totalAwardAmt": 0,
+  "relatedOpportunities": [
+    {
+      "data": {
+        "award": {
+          "date": null,
+          "amount": null,
+          "number": "awd123",
+          "awardee": {
+            "duns": null,
+            "name": null,
+            "location": null
+          },
+          "lineItemNumber": null,
+          "deliveryOrderNumber": "donumber"
+        },
+        "title": "Test Justification 4 conv 1",
+        "id": "96ba2e5833b14cecb3c2b3ac1ba3b56e",
+        "opportunityId": "96ba2e5833b14cecb3c2b3ac1ba3b56e"
+      },
+      "archived": false,
+      "cancelled": false,
+      "latest": false,
+      "deleted": false,
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://86samdotgovopportunitiesmoderncomp.apps.prod-iae.bsp.gsa.gov/opps/v2/opportunities/8ea415b4605e4204a374f0cce83a274e?latest=true",
+          "hreflang": null,
+          "media": null,
+          "title": null,
+          "type": null,
+          "deprecation": null
+        }
+      ]
+    }
+  ]
+}
+</pre></code>
+</p>
+</details>
 
 ## API Contract JSON
 
@@ -3141,13 +3249,17 @@ The following error messages may be returned as part of the response to various 
 
 Error Message | Reason/Description
 --------------|-------------------
-Please provide valid Authorization Email & API Key | API Key and/or Authorization Email is required
+Please provide valid Authorization Email & API Key |	API Key and/or Authorization Email is required
 Encountered error authenticating user.Invalid JWT provided | Invalid Authorization Email provided
-Insufficient privileges to retrieve system account profile as the given organization is invalid | Invalid Organization ID provided
-Error processing POST request | Invalid JSON format provided
-$.data: is missing but it is required | Request JSON is empty
-"$.requestType: does not have a value in the enumeration [archive_request, unarchive_request, publish_request, update_publish_request, cancel_request, uncancel_request]" ] | Request Type must be valid for operation
-Please provide Opportunity id | Invalid Opportunity ID provided
+Insufficient privileges to retrieve system account profile as the given organization is invalid |	Invalid Organization ID provided
+Error processing POST request |	Invalid JSON format provided
+$.data: is missing but it is required |	Request JSON is empty
+"$.requestType: does not have a value in the enumeration [archive_request, unarchive_request, publish_request, update_publish_request, cancel_request, uncancel_request]" ] |	Request Type must be valid for operation
+Please provide Opportunity id	| Invalid Opportunity ID provided
+Insufficient privileges to retrieve system account profile as the given organization is not part of the approved FH hierarchy	| Office ID provided is not authorized for system account
+Insufficient privileges to edit opportunity |	Account does not have appropriate privileges to edit opportunity
+This opportunity cannot be published. Auto 15 archive type is not allowed for this opportunity type |	Archive type = auto 15 archive type is not allowed for type “u” Justification and Authorization sections
+
 
 <p><small><a href="#">Back to top</a></small></p>
 
@@ -3157,43 +3269,60 @@ This section details possible error messages for specific operations.
 
 Field | Error Message | Reason/Description | Operation
 ------|---------------|--------------------|----------
-Additional Reporting | $.additionalReporting[0]: does not have a value in the enumeration [none, recovery_act] | Additional Reporting is required  | Publish
-Archive Date | $.archive.date: does not match the date pattern <code>^\\d{4}-(?:0[0-9]{1}|1[0-2]{1})-(0?[1-9]|[12][0-9]|3[01])$</code> | Archive Date must be in specified format | Create, Publish, Uncancel, Unarchive
-Archive Date | This opportunity cannot be published. Inactive date is a required field. | Archive Date is required if Archive Type = autocustom | Create, Publish, Uncancel, Unarchive
-Archive Type | This opportunity cannot be published. Inactive Policy is a required field. | Archive Type is required | Publish
-Archive Type | $.archive.type: does not have a value in the enumeration[auto15, auto30, autocustom, manual] | Archive type must be specified value | Create, Publish, Uncancel, Unarchive
-Archive Type | This opportunity cannot be published. Auto 15 archive type is not allowed for this opportunity type.  | Archive Type = auto15 not allowed  | Publish
-Authorization | Insufficient privileges to edit opportunity | See User Account Authorization section | Update, Publish, Revise
-Authorization | Insufficient privileges to create opportunity | Insufficient privileges to create an award notice. See User Account Authorization section for more details. | Create
-Authorization | Insufficient privileges to create request | Insufficient privileges to publish an award notice. See User Account Authorization section for more details. | Create
-Award Amount | Award Detail Section-Please enter valid integer for Amount Field | Award Amount required  | Publish
-Award Date | Award Details Section - Contract Award Date provided is in an invalid format. | Date is not in specified format | Create, Publish, Uncancel, Unarchive
-Award Date | Award Details section -Award date provided is in the past. | Award Date must be current or future date. | Create, Publish, Uncancel, Unarchive
-Award Number | Award Details Section - Contract Award Number is a required field. | Contract Award Number is missing | Publish,Uncancel, Unarchive
-Classification Code | This opportunity cannot be published. Classification Code provided did not match expected codes | Invalid PSC provided | Publish
-Deadlines Response | This opportunity cannot be published. | Response Deadline Date is required | Publish
-Description | Description is required | Description is required | Publish
-IVL | This opportunity cannot be published. Interested Vendors List Add is a required field. | Interested Vendors List Add is a required | Publish
-NAICS Code | This opportunity cannot be published. NAICS provided did not match expected codes | NAICS Code is invalid | Create, Publish
-NAICS Type | $.data.naics[0].type: does not have a value in the enumeration [Primary] | NAICS Type is required | Create
+Additional Reporting |	This opportunity cannot be published. Additional reporting is required. |	Additional Reporting is required with valid values of “none” or “recovery_act”	| Publish
+ARCHIVE |	This opportunity is not the latest published. |	Draft Opportunity cannot be archived.	| Archive
+Archive Date |	$.archive.date: does not match the date pattern ^\\d{4}-(?:0[0-9]{1}|1[0-2]{1})-(0?[1-9]|[12][0-9]|3[01])$ |	Archive Date must be in specified format |	Create, Publish, Uncancel, Unarchive
+Archive Date |	This opportunity cannot be published. Inactive date is a required field. |	Archive Date is required if Archive Type = autocustom |	Create, Publish, Uncancel, Unarchive
+Archive Type |	This opportunity cannot be published. Inactive Policy is a required field. |	Archive Type is required |	Publish
+Archive Type |	$.archive.type: does not have a value in the enumeration[auto15, auto30, autocustom] |	Archive type must be specified value | Create, Publish, Uncancel, Unarchive
+Archive Type |	This opportunity cannot be published. Auto 15 archive type is not allowed for this opportunity type. | Archive Type = auto15 not allowed |	Publish
+attType |	Attachment must have AttType of file or link |	Attachment type must be a file or a line |	Create Attachment
+Authorization |	Insufficient privileges to edit opportunity |	See User Account Authorization section |	Update, Publish, Revise
+Authorization |	Insufficient privileges to create opportunity |	Insufficient privileges to create an award notice. See User Account Authorization section for more details. |	Create Opportunity
+Authorization |	Insufficient privileges to create request |	Insufficient privileges to publish an award notice. See User Account Authorization section for more details. |	Create
+Award |	Award Details Section - Contract Award Dollar Amount is not a valid field for this opportunity type |	Award Section is not valid for Base Notice Types (s, o, p, r, g, k, i) |	Publish
+Award Amount |	Award Detail Section-Please enter valid integer for Amount Field |	Award Amount required |	Publish
+Award Amount |	Award Details Section - Contract Award Dollar Amount is not a valid field for this opportunity type |	Contract Award Amount only valid for Type "a" Award |	Publish
+Award Date |	Award Details Section - Contract Award Date provided is in an invalid format. |	Date is not in specified format |	Create Opportunity, Publish, Uncancel, Unarchive
+Award Date |	Award Details section -Award date provided is in the past. |	Award Date must be current or future date. |	Create Opportunity, Publish, Uncancel, Unarchive
+Award Number |	Award Details Section - Contract Award Number is a required field	| Contract Award Number is missing | Publish, Uncancel, Unarchive
+Classification Code |	This opportunity cannot be published. Classification Code provided did not match expected codes |	Invalid PSC provided |	Publish
+CANCEL |	This opportunity cannot be cancelled. This opportunity is a revision. |	Cannot cancel a revised Opportunity. |	Cancel
+Content |	File Resource must have content. |	File Resource must be filled out | Create Attachment
+Contract Award Dollar Amount |	Award Details Section – Please enter valid integer for Amount Field	| Valid integer amount must be entered for award dollar amount | Publish
+CREATE | Insufficient privileges to create opportunity |	Account does not have appropriate privileges to create opportunity | CREATE
+CREATE ATTACHMENT |	Insufficient privileges to upload attachment | Attachments cannot be added to published notices |	Create Attachment
+DELETE ATTACHMENT |	No attachments found for the resource |	Opportunity ID and/or Resource ID is invalid | DELETE ATTACHMENT
+Deadlines Response | This opportunity cannot be published. | Response Deadline Date is required |	Publish
+Description |	Description is required |	Description is required |	Publish
+IVL |	This opportunity cannot be published. Interested Vendors List Add is a required field. |Interested Vendors List Add is a required |	Publish
+Justification Authority |	This opportunity cannot be published. Justification Authority is not valid field for this opportunity type | Justification Authority Section is not valid for Base Notice Types (s, o, p, r, g, k, i) | Publish
+Justification Authority |	This opportunity cannot be published. Justification Authority Modification Number is not valid field for this opportunity type. | Justification Authority Section is not valid for Base Notice Types (s, o, p, r, g, k, i) | Publish
+Justification Authority |	This opportunity cannot be published. Justification Authority is not valid field for this opportunity type | Justification Authority only valid for Type "u" Justification and Authorization | Publish
+Justification Authority |	This opportunity cannot be published. Justification Authority Modification Number is not valid field for this opportunity type | Justification Authority Modification Number is only valid for Type "u" Justification and Authorization | Publish
+NAICS Code | This opportunity cannot be published. NAICS provided did not match expected codes | NAICS Code is invalid | Create Opportunity, Publish
+NAICS Type | $.data.naics[0].type: does not have a value in the enumeration [Primary] | NAICS Type is required | Create Opportunity
+Notice Type |	This opportunity cannot be published. The opportunity type `j` is no longer supported	| See Notice Types table for valid notice types |	Publish
 Opportunity ID | Opportunity ID for the selected opportunity type already exists | Cannot publish an existing published record | Publish
-Opportunity ID | Opportunity cannot be updated. | An Opportunity cannot be revised if that Opporutnity was revised previously and is currently in draft state | Revise
-Opportunity ID | Opportunity ID is required | Opportunity ID is required | All
-Opportunity Type | Opportunity type is required | Opportunity type is required | Create
-Organization ID| Contracting office is required | FH Org Id/AAC code is required | Publish
-Organization ID| Invalid OrganizationId provided | Invalid Organization ID| Create
-Point Of Contact Type | $.data.pointOfContact[0].type: does not have a value in the enumeration [primary, secondary, owner] | Point of Contact Type is required | Create
-Primary Contact Full Name | Primary Contact - Name is required | Point of Contact Full Name is required | Publish
-Title | Title is required | Title is required | Publish
-Request Id | Duplicate request. Vendor is already added as an authorized party on the notice. | Request already exists for the vendor on the notice. | AddressAuthorizedParty
-Duns# | No contact match on vendor data provided | Not a Valid email or Duns#. | AddressAuthorizedParty
-
-
+Opportunity ID | Opportunity cannot be updated | An Opportunity cannot be revised if that Opporutnity was revised previously and is currently in draft state  | Revise
+Opportunity ID | Opportunity ID is required	| Opportunity ID is required | All
+Opportunity Type | Opportunity type is required | Opportunity type is required | Create Opportunity
+Opportunity Type | errorCode":400,"message":"Opportunity type given is not a valid type." |	Opportunity type is empty |	Create Opportunity
+Organization Id |	Contracting office is required | FH Org Id/AAC code is required |	Publish
+Organization Id |	The Organization ID that you provided is an inactive and/or invalid. | Inactive/Invalid Organization Id |	Create Opportunity
+Organization Id |	The Organization ID that you provided is not an office level, and it must be for this opportunity type.	| Organization ID is not valid for opportunity type. Note: Organization ID must be Office level unless creating a Special Notice.	| Create Opportunity
+Point of Contact Type |	$.data.pointOfContact[0].type: does not have a value in the enumeration [primary, secondary, owner] |	Point of Contact Type is required |	Create Opportunity
+Point of Contact Email |	Primary Contact – Email is required	| If Contact email is missing. This is a required field	| Publish
+Primary Contact Full Name |	Primary Contact - Name is required | Point of Contact Full Name is required | Publish
+Response Date |	This opportunity cannot be published. Response Date is a required field |	Response Date is only valid for Notice Type “o” |	Publish
+Title |	Title is required |	Title is required |	Publish
+UNARCHIVE |	This opportunity is not the latest published |	Only archived notices can be unarchived | UNARCHIVE
+userFileName | File Resource must have userFileName | File Name is a required field |	Create Attachment
+Request Id |	Duplicate request. Vendor is already added as an authorized party on the notice. | Request already exists for the vendor on the notice.	| AddAuthorizedParty
+Duns# |	No contact match on vendor data provided.	| Not a Valid email or Duns#.	| AddAuthorizedParty
 
 ## Coming soon…
-* Get Attachment
-* Get Related Opportunities
-* Check Solicitation Number Uniqueness
+
 
 ## FAQ
 
