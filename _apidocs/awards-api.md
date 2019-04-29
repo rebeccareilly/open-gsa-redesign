@@ -772,7 +772,7 @@ API response consists of Sections, Sub-sections and Tags underneath each of the 
 | phoneNumber  | string  | Phone Number  |
 | faxNumber  | string  | Fax Number  |
 | congressionalDistrict  | string  | Congressional District  |
-| **entityInformation --> entityUEIDUNSInformation**   |
+| **entityInformation --> entityUEIInformation**   |
 | cageCode  | string  | CAGE Code  |
 | ueiDUNS  | string  | Unique Entity Identifier DUNS  |
 | ultimateParentUEIDUNS  | string  | Ultimate Parent UEI DUNS  |
