@@ -3328,5 +3328,6 @@ Duns# |	No contact match on vendor data provided.	| Not a Valid email or Duns#.	
 Date | Version | Description
 ------|---------------|---------
 4/25/2019 | v1.0 | Base Version
+4/29/2019 | v1.1 | Added information for Get Authorized Party List <br> Added Add Authorized Party <br> Added Vendor Data JSON <br> POC Email changed to not required <br> Change log added <br> Secure Attachment Download authorization section added <br> Alpha and beta endpoint section added
 
 <p><small><a href="#">Back to top</a></small></p>
