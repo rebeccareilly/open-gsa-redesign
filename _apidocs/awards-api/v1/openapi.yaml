@@ -3023,29 +3023,29 @@ components:
     VendorLocation:
       type: object
       properties:
-        entityStreetAddress1:
+        streetAddress1:
           type: string
-        entityStreetAddress2:
+        streetAddress2:
           type: string
-        entityStreetAddress3:
+        streetAddress3:
           type: string
-        entityCity:
+        city:
           type: string
-        entityStateCode:
+        stateCode:
           type: string
-        entityState:
+        state:
           type: string
-        entityZipCode:
+        zipCode:
           type: string
-        entityCountryCode:
+        countryCode:
           type: string
-        entityCountryName:
+        countryName:
           type: string
-        entityPhoneNumber:
+        phoneNumber:
           type: string
-        entityFaxNumber:
+        faxNumber:
           type: string
-        entityCongressionalDistrict:
+        congressionalDistrict:
           type: string
     VendorDUNSInformation:
       type: object

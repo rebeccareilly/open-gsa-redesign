@@ -760,18 +760,18 @@ API response consists of Sections, Sub-sections and Tags underneath each of the 
 | isSBACertifiedHUBZoneFirm  | string  | Is SBA Certified HUB Zone Firm  |
 | isSBACertified8aJointVenture  | string  | Is SBA Certified 8a Joint Venture  |
 | **entityInformation --> entityLocation**   |
-| entityStreetAddress1  | string  | Entity Street Address 1  |
-| entityStreetAddress2  | string  | Entity Street Address 2  |
-| entityStreetAddress3  | string  | Entity Street Address 3  |
-| entityCity| string  | Entity City  |
-| entityStateCode  | string  | Entity State Code  |
-| entityState  | string  | Entity State  |
-| entityZipCode  | string  | Entity Zip Code  |
-| entityCountryCode | string  | Entity Country Code  |
-| entityCountryName  | string  | Entity Country Name  |
-| entityPhoneNumber  | string  | Entity Phone Number  |
-| entityFaxNumber  | string  | Entity Fax Number  |
-| entityCongressionalDistrict  | string  | Entity Congressional District  |
+| streetAddress1  | string  | Street Address 1  |
+| streetAddress2  | string  | Street Address 2  |
+| streetAddress3  | string  | Street Address 3  |
+| city| string  | City  |
+| stateCode  | string  | State Code  |
+| state  | string  | State  |
+| zipCode  | string  | Zip Code  |
+| countryCode | string  | Country Code  |
+| countryName  | string  | Country Name  |
+| phoneNumber  | string  | Phone Number  |
+| faxNumber  | string  | Fax Number  |
+| congressionalDistrict  | string  | Congressional District  |
 | **entityInformation --> entityUEIDUNSInformation**   |
 | entityCageCode  | string  | Entity CAGE Code  |
 | ueiDUNS  | string  | Unique Entity Identifier DUNS  |
