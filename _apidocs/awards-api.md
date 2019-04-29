@@ -773,7 +773,7 @@ API response consists of Sections, Sub-sections and Tags underneath each of the 
 | faxNumber  | string  | Fax Number  |
 | congressionalDistrict  | string  | Congressional District  |
 | **entityInformation --> entityUEIDUNSInformation**   |
-| entityCageCode  | string  | Entity CAGE Code  |
+| cageCode  | string  | CAGE Code  |
 | ueiDUNS  | string  | Unique Entity Identifier DUNS  |
 | ultimateParentUEIDUNS  | string  | Ultimate Parent UEI DUNS  |
 | ultimateParentEntityName  | string  | Ultimate Parent Entity Name |
