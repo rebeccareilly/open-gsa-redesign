@@ -1086,9 +1086,21 @@ API response consists of two Sections and Tags underneath each of the Sections
     | piid | string | PIID  |
     | modificationNumber | string | Modification Number  |
     | transactionNumber | string | Transaction Number  |
+    | reasonForModificationCode | string | Reason For Modification Code  |
+    | reasonForModificationDescription | string | Reason For Modification Description   |
     | referencedIDVAgencyID | string | Referenced IDV Agency ID  |
     | referencedIDVPIID | string | Referenced IDV PIID  |
     | referencedIDVModificationNumber | string | Referenced IDV Modification Number  |
+    | documentVersion | string  | Document Version  | 
+    | otherAgencyID | string  | Other Agency ID  |
+    | otherAgencyName | string  | Other Agency Name  | 
+    | otherPIID | string  | Other PIID  | 
+    | otherModificationNumber | string  | Other Modification Number  | 
+    | otherTransactionNumber | string  | Other Transaction Number  | 
+    | otherReferencedIDVAgencyID | string  | Other Referenced IDV Agency ID  | 
+    | otherReferencedIDVAgencyName | string  | Other ReferencedI DV Agency Name  | 
+    | otherReferencedIDVPIID | int  | Other Referenced IDV PIID  | 
+    | otherReferencedIDVModificationNumber | string  | Other Referenced IDV ModificationNumber  | 
     | dateSigned | string | Date Signed  |
     | completionDate | string | Completion Date  |
     | baseAndAllOptionsValue | BigDecimal | Base And All Options Value  |
