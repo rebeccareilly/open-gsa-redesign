@@ -3050,7 +3050,7 @@ components:
     VendorDUNSInformation:
       type: object
       properties:
-        entityCageCode:
+        cageCode:
           type: string
         ueiDUNS:
           type: string
@@ -3069,19 +3069,19 @@ components:
     VendorSamRegistrationDetails:
       type: object
       properties:
-        entityRegistrationDate:
+        registrationDate:
           type: string
           format: date-time
-        entityRenewalDate:
+        renewalDate:
           type: string
           format: date-time
-        entityDivisionName:
+        divisionName:
           type: string
-        entityDivisionNumberOrOfficeCode:
+        divisionNumberOrOfficeCode:
           type: string
-        entitySamExceptionCode:
+        samExceptionCode:
           type: string
-        entitySamExceptionDescription:
+        samExceptionDescription:
           type: string
     ContractingOfficerBusinessSizeDetermination:
       type: object

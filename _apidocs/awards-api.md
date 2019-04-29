@@ -443,7 +443,8 @@ Generating the API Key:
 | sbaCertifiedSmallDisadvBusiness |  Is SBA Certified Small Disadvantaged Business. <br/>Example: 'YES'. |          
 | sbaCertified8a |  Is SBA Certified 8(a) Program Participant. <br/>Example: 'NO'. |         
 | sbaCertifiedHubZone |  Is SBA Certified Hub Zone firm. <br/>Example: 'No'. |          
-| sbaCertified8aJointVenture | Is SBA Certified 8(a) Joint Venture. <br/>Example: 'NO'. |         
+| sbaCertified8aJointVenture | Is SBA Certified 8(a) Joint Venture. <br/>Example: 'NO'. |    
+| selfCertifiedHubZoneJointVenture |  SelfCertified Hub Zone Joint Venture. <br/>Example: 'NO'. |    
 | entityAddressLine1 |  Entity Address Line1. <br/>Example: '1 COCA COLA '. |          
 | entityAddressLine2 |  Entity Address Line2. <br/>Example: 'COCA COLA PLZ'. |          
 | entityAddressLine3 |  Entity Address Line3. <br/>Example: 'st'. |        
@@ -453,8 +454,7 @@ Generating the API Key:
 | entityCountryCode |  Entity Country Code. <br/>Example: 'USA'. |          
 | entityPhoneNumber |  Entity Phone Number. <br/>Example: '9999999999'. |          
 | entityFaxNumber |  Entity Fax Number. <br/>Example: '9999999999'. |          
-| entityCongressionalDistrict |  Entity Congressional District. <br/>Example: '05'. |          
-| selfCertifiedHubZoneJointVenture |  SelfCertified Hub Zone Joint Venture. <br/>Example: 'NO'. |         
+| entityCongressionalDistrict |  Entity Congressional District. <br/>Example: '05'. |                  
 | entityStateCode |  Entity state code. <br/>Example: 'GA'. |
 | entityCountry| Entity country name . <br/>Example: 'UNITED STATES'. | 
 | cageCode |  CAGE Code. <br/>Example: '00000'. |  
@@ -778,12 +778,12 @@ API response consists of Sections, Sub-sections and Tags underneath each of the 
 | ultimateParentUEIDUNS  | string  | Ultimate Parent UEI DUNS  |
 | ultimateParentEntityName  | string  | Ultimate Parent Entity Name |
 | **entityInformation --> entitySamRegistrationDetails**   |
-| entityRegistrationDate  | string  | Entity Registration Date  |
-| entityRenewalDate | string  | Entity Renewal Date  |
-| entityDivisionName  | string  | Entity Division Name  |
-| entityDivisionNumberOrOfficeCode  | string  | Entity Division Number Or Office Code  |
-| entitySamExceptionCode  | string  | Entity SAM Exception Code  |
-| entitySamExceptionDescription  | string  | Entity Sam Exception Description  |
+| registrationDate  | string  | Registration Date  |
+| renewalDate | string  | Renewal Date  |
+| divisionName  | string  | Division Name  |
+| divisionNumberOrOfficeCode  | string  | Division Number Or Office Code  |
+| samExceptionCode  | string  | SAM Exception Code  |
+| samExceptionDescription  | string  | SAM Exception Description  |
 | **entityInformation --> contractingOfficerBusinessSizeDetermination**   |
 | contractingOfficerBusinessSizeSelectionCode  | string  | Contracting Officer Business Size Selection Code  |
 | contractingOfficerBusinessSizeSelectionDescription  | string  | Contracting Officer Business Size Selection Description  |
