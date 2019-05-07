@@ -1074,7 +1074,6 @@ doNumber | query | string | No | Delivery Order Number
 includeCount | query | boolean | No | True or false
 keyword | query | string | No | Enter any keyword from the description
 latest | query | boolean | No | True or false
-links | query | boolean | No | Array Of links
 opportunityIds | query | Array | No | Opportunity IDs (comma separated)
 noticeType | query | Array | No | See Notices Types table (comma separated)
 organizationId | query | Array | No | FH Org ID/AAC code of the office where an Opportunity is being submitted (comma separated)
@@ -2423,7 +2422,7 @@ Parameter Name | Parameter Type | Data Type  | Required | Description
 Authorization | Header |  string | Yes | Valid and authorized user ID
 api_key | query | string | Yes | Valid System Account API Key
 opportunityId | query | string | Yes | Opportunity ID
-status | query | string | Yes | Resource ID
+status | query | string | Yes |  Request access status can be: Pending, Approved, Rejected, or blank to get all request details for a notice
 
 Responses
 
@@ -2438,6 +2437,7 @@ Examples
 <p>
 <code><pre>
 {
+
     "_embedded": {
         "authorizedPartyList": [
             {
@@ -2506,7 +2506,7 @@ Parameter Name | Parameter Type | Data Type  | Required | Description
 Authorization | Header |  string | Yes | Valid and authorized user ID
 api_key | query | string | Yes | Valid System Account API Key
 opportunityId | query | string | Yes | Opportunity ID
-Request JSON  | Body | JSON | Yes | Refer to Vendor Data JASON
+Request JSON  | Body | JSON | Yes | Refer to Vendor Data JSON
 
 Responses
 
