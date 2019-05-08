@@ -9,6 +9,8 @@ The Opportunity Management API will allow authorized users to submit and request
 
 **Note:** The specifications on this page are for a soon to be released API.  Check back here or be in contact with IAE for the release date and testing session.
 
+**Note:** Operations marked with * (asterisk) are not available at this time
+
 ## Getting Started
 
 Opportunity Management API can be accessed from Beta or Alpha via the following endpoints:
@@ -18,13 +20,13 @@ Opportunity Management API can be accessed from Beta or Alpha via the following 
 ###	Authentication and Authorization
 
 #### Generating a System Account API Key
-* Users registered with a government email address and have appropriate Opportunities Domain role may request a system account for data access.
+* Users registered with a government email address and have appropriate System Account Manager or System Account Admin role may request a system account for data access.
 * If a user satisfies the above registration criteria they will be able to access the System Accounts widget from their Workspace page after logging in.
-* The user can then select “Go to System Accounts” from the widget and fill out the required sections.
+* The user can then select “Request System Account” from the widget and fill out the required sections with appropriate Contract Opportunities permissions.
 * The requested system account will then need to be approved. After approval the user will be notified via email and they can also see the updated status in the System Account widget.
-* The user can select ‘Go to System Accounts’ again in the widget from their workspace and enter a new system account password.
-* After setting up the password the user will see a new section for retrieving a system account API Key.
-The user must enter their password again to retrieve the key.
+* The user can select ‘Go to System Accounts’ in the widget from their workspace and enter a new system account password.
+* After setting up the password the user will see a new section for retrieving a system account API Key. The user must enter their password again to retrieve the key.
+
 
 #### System Account Authentication
 In order to utilize the Contract Opportunity Management API, the following is required:
@@ -34,7 +36,7 @@ In order to utilize the Contract Opportunity Management API, the following is re
 In order to perform an Opportunity Management API operation, the following is required:
 * beta.SAM.GOV user account with either 'Administrator', 'Contracting Officer' role or 'Contracting Specialist' role. Permissions for operations by role are listed in the table below.<br/>
 
-To submit any opportunity notice type (except “Special Notice”) for an office, user should provide Federal Hierarchy (FH) Organization IDor Activity Address Code (AAC) (procurement/non-procurement). To submit Special Notice opportunity, user should provide Federal Hierarchy (FH) Organization IDof office, sub-tier or department or Activity Address Code (AAC) (procurement/non-procurement) or [other codes] for sub-tier and department. <br/>
+To submit any opportunity notice type (except “Special Notice”) for an office, user should provide Federal Hierarchy (FH) Organization ID or Activity Address Code (AAC) (procurement/non-procurement). To submit Special Notice opportunity, user should provide Federal Hierarchy (FH) Organization ID of office, sub-tier or department or Activity Address Code (AAC) (procurement/non-procurement) or [other codes] for sub-tier and department. <br/>
 **Note:** Permissions marked "Yes" are may not be assigned by default and will require your user administrator to update.
 
 <p><small><a href="#">Back to top</a></small></p>
@@ -43,7 +45,7 @@ Operation    | Administrator <br/>(Contract Opportunities domain)| Contracting O
 -------------|---------------|---------------------|------------------------------
 Create Opportunity | Yes | Yes | Yes
 Publish Opportunity | Yes | Yes | No
-Revise Opportunity | Yes | Yes | Yes
+Revise Opportunity | Yes | Yes | No
 Update Opportunity | Yes | Yes | No
 Opportunity History | Yes | Yes | Yes
 Delete Opportunity | Yes | No | No
@@ -63,7 +65,10 @@ Get IVL | Yes | Yes | Yes
 IVL settings | Yes | Yes | Yes
 Delete Vendor | Yes | Yes | Yes
 Get IVL by DUNS | Yes | Yes | Yes
-
+Get Authorized Party | Yes | Yes | Yes
+Add Authorized Party  | Yes | Yes | Yes
+Check Unique Solicitation Number | Yes | Yes | Yes
+Get Related Opportunities | Yes | Yes | Yes
 
 
 <p><small><a href="#">Back to top</a></small></p>
@@ -1070,7 +1075,6 @@ doNumber | query | string | No | Delivery Order Number
 includeCount | query | boolean | No | True or false
 keyword | query | string | No | Enter any keyword from the description
 latest | query | boolean | No | True or false
-links | query | boolean | No | Array Of links
 opportunityIds | query | Array | No | Opportunity IDs (comma separated)
 noticeType | query | Array | No | See Notices Types table (comma separated)
 organizationId | query | Array | No | FH Org ID/AAC code of the office where an Opportunity is being submitted (comma separated)
@@ -1480,10 +1484,9 @@ Examples
 ### Get Opportunity by ID
 
 
-
 ------- | -------
 **Request Type** | GET
-**URL** | /v1/api/opportunities/{opportunityId}
+**URL** | /v1/api/{opportunityId}
 **Summary** | Get Opportunity by Opportunity ID
 **Consumes** | Request Parameters
 **Produces** | JSON
@@ -1826,7 +1829,7 @@ Examples
 
 <p><small><a href="#">Back to top</a></small></p>
 
-### Create Attachment
+### Create Attachment*
 
 ------- | -------
 **Request Type** | POST
@@ -1886,7 +1889,7 @@ Examples
 
 <p><small><a href="#">Back to top</a></small></p>
 
-### Update Attachment
+### Update Attachment*
 
 
 ------- | -------
@@ -1948,7 +1951,7 @@ Examples
 
 <p><small><a href="#">Back to top</a></small></p>
 
-### Download All Attachments (metadata)
+### Download All Attachments (metadata)*
 
 
 ------- | -------
@@ -2033,7 +2036,7 @@ Examples
 </p>
 </details>
 
-### Download Attachment
+### Download Attachment*
 
 
 ------- | -------
@@ -2067,7 +2070,7 @@ _NA_
 
 <p><small><a href="#">Back to top</a></small></p>
 
-### Download Attachments as Zip
+### Download Attachments as Zip*
 
 
 ------- | -------
@@ -2097,7 +2100,7 @@ N/A
 
 <p><small><a href="#">Back to top</a></small></p>
 
-### Delete Attachment
+### Delete Attachment*
 
 ------- | -------
 **Request Type** | DELETE
@@ -2404,7 +2407,7 @@ Examples
 </p>
 </details>
 
-### Get Authorized Party ###
+### Get Authorized Party* ###
 
 ------- | -------
 **Request Type** | GET
@@ -2420,7 +2423,7 @@ Parameter Name | Parameter Type | Data Type  | Required | Description
 Authorization | Header |  string | Yes | Valid and authorized user ID
 api_key | query | string | Yes | Valid System Account API Key
 opportunityId | query | string | Yes | Opportunity ID
-status | query | string | Yes | Resource ID
+status | query | string | Yes |  Request access status can be: Pending, Approved, Rejected, or blank to get all request details for a notice
 
 Responses
 
@@ -2435,6 +2438,7 @@ Examples
 <p>
 <code><pre>
 {
+
     "_embedded": {
         "authorizedPartyList": [
             {
@@ -2487,7 +2491,7 @@ Examples
 </p>
 </details>
 
-### Add Authorized Party ###
+### Add Authorized Party* ###
 
 ------- | -------
 **Request Type** | POST
@@ -2503,7 +2507,7 @@ Parameter Name | Parameter Type | Data Type  | Required | Description
 Authorization | Header |  string | Yes | Valid and authorized user ID
 api_key | query | string | Yes | Valid System Account API Key
 opportunityId | query | string | Yes | Opportunity ID
-Request JSON  | Body | JSON | Yes | Refer to Vendor Data JASON
+Request JSON  | Body | JSON | Yes | Refer to Vendor Data JSON
 
 Responses
 
@@ -2529,7 +2533,7 @@ Examples
 </p>
 </details>
 
-### Check Unique Solicitation Number ###
+### Check Unique Solicitation Number* ###
 
 ------- | -------
 **Request Type** | GET
@@ -2572,7 +2576,7 @@ Examples
 </p>
 </details>
 
-### Get Related Opportunities ###
+### Get Related Opportunities* ###
 
 ------- | -------
 **Request Type** | GET
@@ -3328,5 +3332,6 @@ Duns# |	No contact match on vendor data provided.	| Not a Valid email or Duns#.	
 Date | Version | Description
 ------|---------------|---------
 4/25/2019 | v1.0 | Base Version
+4/29/2019 | v1.1 | Added information for Get Authorized Party List <br> Added Add Authorized Party <br> Added Vendor Data JSON <br> POC Email changed to not required <br> Change log added <br> Secure Attachment Download Authorization section added <br> Alpha and Beta endpoint section added
 
 <p><small><a href="#">Back to top</a></small></p>
