@@ -323,7 +323,7 @@ Examples
     "classificationCode": "13",
     "organizationId": "100120624",
     "naics": [{
-      "type": "Primary",
+      "type": "primary",
       "code": ["111150"]
     }],
     "pointOfContact": [{
