@@ -55,20 +55,21 @@ Cancel Opportunity | Yes | Yes | Yes
 Uncancel Opportunity | Yes | Yes | Yes
 Archive Opportunity | Yes | Yes | Yes
 Unarchive Opportunity | Yes | Yes | Yes
-Create Attachment  | Yes | Yes | Yes
-Update Attachment | Yes | Yes | Yes
-Download Attachment | Yes | Yes | Yes
-Download Attachment Zip | Yes | Yes | Yes
-Delete Attachment | Yes | Yes | Yes
+Create Attachment*  | Yes | Yes | Yes
+Update Attachment* | Yes | Yes | Yes
+Download Attachment* | Yes | Yes | Yes
+Download All Attachment (metadata)* | Yes | Yes | Yes
+Download Attachment Zip* | Yes | Yes | Yes
+Delete Attachment* | Yes | Yes | Yes
 Get Attachment | Yes | Yes | Yes
 Get IVL | Yes | Yes | Yes
 IVL settings | Yes | Yes | Yes
 Delete Vendor | Yes | Yes | Yes
 Get IVL by DUNS | Yes | Yes | Yes
-Get Authorized Party | Yes | Yes | Yes
-Add Authorized Party  | Yes | Yes | Yes
-Check Unique Solicitation Number | Yes | Yes | Yes
-Get Related Opportunities | Yes | Yes | Yes
+Get Authorized Party* | Yes | Yes | Yes
+Add Authorized Party*  | Yes | Yes | Yes
+Check Unique Solicitation Number* | Yes | Yes | Yes
+Get Related Opportunities* | Yes | Yes | Yes
 
 
 <p><small><a href="#">Back to top</a></small></p>
@@ -2148,6 +2149,7 @@ Parameter Name | Parameter Type | Data Type  | Required | Description
 Authorization | Header |  string | Yes | Valid and authorized user ID
 api_key | query | string | Yes | Valid System Account API Key
 opportunityId | query | string | Yes | Opportunity ID
+entityId | query | string | No | Entity ID (DUNS #)
 
 <p><small><a href="#">Back to top</a></small></p>
 
@@ -2307,105 +2309,6 @@ Examples
 N/A
 
 <p><small><a href="#">Back to top</a></small></p>
-
-### Get IVL by DUNS
-
-
-
-------- | -------
-**Request Type** | GET
-**URL** | /v1/api/{opportunityId}/ivl/{duns}
-**Summary** | Get IVL by DUNS for Opportunity ID
-**Consumes** | Request Parameters
-**Produces** | JSON
-
-Request Parameters
-
-Parameter Name | Parameter Type | Data Type  | Required | Description
----------------|----------------|------------|----------|------------
-Authorization | Header |  string | Yes | Valid and authorized user ID
-api_key | query | string | Yes | Valid System Account API Key
-opportunityId | query | string | Yes | Opportunity ID
-duns | query | string | Yes | DUNS Number
-
-Responses
-
-HTTP Status Code | Response Type | Reason  | Description
------------------|---------------|---------|------------
-duns | string |  | DUNS number for the business entity
-cageNumber | string |  | Identifies a given facility at a specific location
-name | string |  | Name of business entity
-addedOn | string |  | Date added to IVL
-contacts | JSON |  | Business entity contact
-contacts.email | string |  | Business entity email
-contacts.firstName | string |  | Business entity contact first name
-contacts.lastName | string |  | Business entity contact last name
-contacts.phoneNumber | string |  | Business entity contact phone number
-contacts.type | string |  | Business entity contact type
-addresses | JSON |  |
-addresses.streetAddress | string |  | Business entity address
-addresses.city | string |  | Business entity city
-addresses.state | string |  | Business entity state
-addresses.zip | string |  | Business entity zip
-addresses.country | string |  | Business entity country
-addresses.addressType | string |  | Business entity address type
-naicsList | Array |  | Business entity’s NAICS
-
-Examples
-
-<details>
-<summary>Response – Get IVL by DUNS</summary>
-<p>
-<code><pre>
-{
- "duns": "899777859",
- "cageNumber": "7GFE0",
- "name": "XYZ CONSULTING.",
- "addedOn": "2018-03-04 14:47:37",
- "contacts": [
-   {
-     "email": "janedoe@xyzconsulting.com",
-     "firstName": "Jane",
-     "lastName": "Doe",
-     "phoneNumber": "5551234567",
-     "type": "Government Business POC"
-   }
- ],
- "addresses": [
-   {
-     "streetAddress": "101 Main St.",
-     "city": "Sometown",
-     "state": "VIRGINIA",
-     "zip": "20191",
-     "country": "UNITED STATES",
-     "addressType": "mailing"
-   }
- ],
- "naicsList": [
-   "511210",
-   "517311",
-   "517312",
-   "517911",
-   "518210",
-   "519130",
-   "541330",
-   "541511",
-   "541512",
-   "541513",
-   "541519",
-   "541611",
-   "541612",
-   "541613",
-   "541614",
-   "541618",
-   "541690",
-   "541715",
-   "541990"
- ]
-}
-</pre></code>
-</p>
-</details>
 
 ### Get Authorized Party* ###
 
@@ -2597,6 +2500,12 @@ Size |	query |	Integer |	No |	Size; Default value: 0
 sortBy |	query |	string |	No |	sortBy; Default Value: -modifiedOn
 Type |	Path |	String |	Yes |	Type
 
+Responses
+
+HTTP Status Code | Response Type | Reason  | Description
+-----------------|---------------|---------|------------
+200 | JSON |	True/False |	Pulls related opportunity information based on the given parameter
+
 Examples
 
 <details>
@@ -2644,6 +2553,241 @@ Examples
       ]
     }
   ]
+}
+</pre></code>
+</p>
+</details>
+
+### Get contacts by opportunities organization* ###
+
+------- | -------
+**Request Type** | GET
+**URL** | opps/v2/opportunities/contacts
+**Summary** | Get contacts by opportunities organization API
+**Consumes** | application/json
+**Produces** | JSON
+
+Request Parameters
+
+Parameter Name | Parameter Type | Data Type  | Required | Description
+---------------|----------------|------------|----------|------------
+X-Auth-Token |	Header |	string |	Yes |	Access token
+opportunityId |	query |	string |	Yes |	Opportunity ID
+
+Responses
+
+HTTP Status Code | Response Type | Reason  | Description
+-----------------|---------------|---------|------------
+200	| JSON |	To get the list of contacts	| List of contacts by opportunities organization API
+
+Examples
+N/A
+
+### Get contract opportunity’s organization (Legacy) API* ###
+
+------- | -------
+**Request Type** | GET
+**URL** | /opps/v2/opportunities/organizations/{organizationId}
+**Summary** | Get contract opportunity’s organization (Legacy) API
+**Consumes** | application/json
+**Produces** | JSON
+
+Request Parameters
+
+Parameter Name | Parameter Type | Data Type  | Required | Description
+---------------|----------------|------------|----------|------------
+organizationId |	query |	string |	Yes |	Opportunity ID
+
+Responses
+
+HTTP Status Code | Response Type | Reason  | Description
+-----------------|---------------|---------|------------
+200	| JSON |	To get the organization ID |	Gets organization id by opportunity’s organization legacy API
+
+Examples
+
+<details>
+<summary>Response</summary>
+<p>
+<code><pre>
+{
+  "_embedded": [
+    {
+      "_link": {
+        "self": ""
+      },
+      "org": {
+        "l2Name": "DLA Acquisition Locations",
+        "l1Name": "Defense Logistics Agency",
+        "name": "DLA Aviation - BSM",
+        "type": "OFFICE",
+        "l3Name": "DLA Aviation - BSM",
+        "agencyName": "DLA Aviation - BSM"
+      }
+    }
+  ]
+}
+</pre></code>
+</p>
+</details>
+
+### Create and publish contract opportunity* ###
+
+------- | -------
+**Request Type** | GET
+**URL** | /opps/v2/opportunities/createAndPublish
+**Summary** | Creates and publishes contract opportunity. Used by SOAP service
+**Consumes** | application/json
+**Produces** | JSON
+
+Request Parameters
+
+Parameter Name | Parameter Type | Data Type  | Required | Description
+---------------|----------------|------------|----------|------------
+X-Auth-Token |	Header | string |	Yes |	Access Token
+Authorization	| Header | string |	Yes |	Compact jws
+
+
+Responses
+
+HTTP Status Code | Response Type | Reason  | Description
+-----------------|---------------|---------|------------
+201	| JSON |	Create and publish opportunity |	Create and publish contract opportunity
+
+Examples
+
+<details>
+<summary>Response</summary>
+<p>
+<code><pre>
+{  
+   "opportunityId":"233deb15b846404b8fc3479b2cb33cfa",
+   "data":{  
+      "type":"p",
+      "solicitationNumber":"M4Test",
+      "title":"TEST_PRESOL",
+      "organizationId":"100186612",
+      "descriptions":[  
+
+      ],
+      "link":{  
+         "additionalInfo":{  
+
+         }
+      },
+      "classificationCode":"85",
+      "naics":[  
+
+      ],
+      "pointOfContact":[  
+         {  
+            "type":"primary",
+            "fullName":"Henry Holmes",
+            "email":"hholmes@test.com",
+            "phone":"1231231234",
+            "fax":"2342345678",
+            "additionalInfo":{  
+
+            }
+         }
+      ],
+      "placeOfPerformance":{  
+         "city":{  
+            "code":"1000",
+            "name":"Abilene"
+         },
+         "state":{  
+            "code":"TX",
+            "name":"Texas"
+         },
+         "country":{  
+            "code":"USA",
+            "name":"UNITED STATES"
+         }
+      },
+      "archive":{  
+         "type":"auto15"
+      },
+      "permissions":{  
+         "IVL":{  
+            "create":true,
+            "read":true,
+            "update":true,
+            "delete":true
+         }
+      },
+      "solicitation":{  
+         "deadlines":{  
+            "response":"2019-04-05T23:59:00-04:00"
+         }
+      },
+      "award":{  
+         "awardee":{  
+            "location":{  
+
+            }
+         },
+         "justificationAuthority":{  
+
+         },
+         "fairOpportunity":{  
+
+         }
+      },
+      "additionalReporting":[  
+         "recovery_act"
+      ]
+   },
+   "description":[  
+      {  
+         "opportunityId":"0ed58151d8af43b795678a4f059022c5",
+         "descriptionId":"17631519f03242d3b04993f6eb39e77f",
+         "modifiedOn":"2019-04-05T18:26:26.847+0000",
+         "body":"test"
+      }
+   ],
+   "resources":[  
+      {  
+         "attType":"link",
+         "link":"http://beta.sam.gov",
+         "description":"test beta sam link",
+         "packageAccessLevel":null
+      },
+      {  
+         "attType":"link",
+         "link":"https://faaco.faa.gov/index.cfm/attachment/download/84723",
+         "description":"test attachment pdf link",
+         "packageAccessLevel":null
+      },
+      {  
+         "attType":"file",
+         "content":"SnVzdCBhIHNtYWxsIHRlc3Q",
+         "resourceName":"test_document1.pdf",
+         "description":null,
+         "packageAccessLevel":null,
+         "explicitAccess":"1",
+         "exportControlled":null
+      },
+      {  
+         "attType":"file",
+         "content":"SnVzdCBhIHNtYWxsIHRlc3Q22",
+         "resourceName":"test_document2.pdf",
+         "description":null,
+         "packageAccessLevel":null,
+         "explicitAccess":"0",
+         "exportControlled":null
+      }
+   ],
+   "parent":{  
+      "opportunityId":"00df7fc00df646468b591536526b004f"
+   },
+   "related":{  
+
+   },
+   "latest":true,
+   "postedDate":"20190327",
+   "modifiedDate":1554488786849,
+   "archived":false
 }
 </pre></code>
 </p>
