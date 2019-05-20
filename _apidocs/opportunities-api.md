@@ -1884,7 +1884,6 @@ Examples
 	"link" : "http://beta.sam.gov",
 	"packageAccessLevel":"public"
 }
-
 </pre></code>
 </p>
 </details>
