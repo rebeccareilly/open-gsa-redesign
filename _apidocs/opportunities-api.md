@@ -1878,12 +1878,13 @@ Examples
 <p>
 <code><pre>
 {
-	"attType": "file",                                              
-	"description": "test",
-	"userFileName": "BETA URL",
-  "link" : "http://beta.sam.gov",
-	"packageAccessLevel": "public"
+	"attType":"link",
+	"description":"test",
+"userFileName": "BETA URL",
+	"link" : "http://beta.sam.gov",
+	"packageAccessLevel":"public"
 }
+
 </pre></code>
 </p>
 </details>
